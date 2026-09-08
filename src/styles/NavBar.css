@@ -1,0 +1,159 @@
+.site-navbar {
+  width: 100%;
+  border-bottom: 1px solid var(--line);
+}
+
+.navbar-inner {
+  width: min(calc(100% - 48px), var(--content-width));
+  min-height: 64px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 36px;
+}
+
+.brand {
+  color: var(--cream);
+  font-size: 1.15rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.main-nav {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.main-nav a {
+  position: relative;
+
+  padding: 21px 0 17px;
+
+  color: var(--cream-soft);
+  font-size: 0.98rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.main-nav a::after {
+  content: "";
+
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: 12px;
+
+  height: 2px;
+
+  background: var(--gold);
+  transition: right 0.2s ease;
+}
+
+.main-nav a:hover,
+.main-nav a:focus-visible {
+  color: var(--gold);
+}
+
+.main-nav a:hover::after,
+.main-nav a:focus-visible::after {
+  right: 0;
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.nav-action {
+  display: grid;
+  place-items: center;
+
+  color: var(--cream);
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.nav-action svg {
+  display: block;
+}
+
+.nav-action:hover,
+.nav-action:focus-visible {
+  color: var(--gold);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 900px) {
+  .navbar-inner {
+    width: min(calc(100% - 32px), var(--content-width));
+    gap: 20px;
+  }
+
+  .main-nav {
+    gap: 18px;
+  }
+
+  .main-nav a {
+    font-size: 0.92rem;
+  }
+
+  .navbar-actions {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 700px) {
+  .navbar-inner {
+    width: calc(100% - 24px);
+    min-height: auto;
+    padding-top: 12px;
+
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "brand actions"
+      "nav nav";
+    row-gap: 4px;
+  }
+
+  .brand {
+    grid-area: brand;
+  }
+
+  .navbar-actions {
+    grid-area: actions;
+    justify-self: end;
+  }
+
+  .main-nav {
+    grid-area: nav;
+
+    width: 100%;
+    justify-content: space-between;
+    gap: 16px;
+
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .main-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .main-nav a {
+    flex: 0 0 auto;
+    padding: 10px 0 13px;
+    font-size: 0.9rem;
+  }
+
+  .main-nav a::after {
+    bottom: 7px;
+  }
+}
