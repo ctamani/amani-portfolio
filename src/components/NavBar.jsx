@@ -3,13 +3,8 @@ import EmailRoundedIcon from "@mui/icons-material/EmailRounded";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
+import { EMAIL_LINK, SITE } from "../config/site.js";
 import "../styles/NavBar.css";
-
-const CONTACT = {
-  github: "https://github.com/ctamani",
-  linkedin: "https://www.linkedin.com/in/amani-chikh-touhami-b93628293/",
-  email: "ctamani96@gmail.com",
-};
 
 const NAV_LINKS = [
   { label: "About", href: "#about" },
@@ -27,19 +22,19 @@ const ACTION_LINKS = [
   },
   {
     label: "GitHub",
-    href: CONTACT.github,
+    href: SITE.github,
     Icon: GitHubIcon,
     openInNewTab: true,
   },
   {
     label: "LinkedIn",
-    href: CONTACT.linkedin,
+    href: SITE.linkedIn,
     Icon: LinkedInIcon,
     openInNewTab: true,
   },
   {
     label: "Email",
-    href: `mailto:${CONTACT.email}?subject=${encodeURIComponent("Portfolio inquiry")}`,
+    href: EMAIL_LINK,
     Icon: EmailRoundedIcon,
     openInNewTab: false,
   },

@@ -1,0 +1,19 @@
+.coder-animation {
+  width: min(500px, 100%);
+  max-height: min(68svh, 640px);
+
+  display: block;
+
+  object-fit: contain;
+  object-position: center;
+
+  image-rendering: pixelated;
+  filter: drop-shadow(0 20px 22px rgba(53, 38, 60, 0.18));
+}
+
+@media (max-width: 760px) {
+  .coder-animation {
+    width: min(300px, 72vw);
+    max-height: 360px;
+  }
+}
