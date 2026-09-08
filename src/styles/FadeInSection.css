@@ -1,0 +1,30 @@
+.fade-section {
+  opacity: 0;
+
+  transition:
+    opacity 0.42s ease var(--fade-delay, 0ms),
+    transform 0.42s ease var(--fade-delay, 0ms);
+}
+
+.fade-section--slide {
+  transform: translateY(11px);
+}
+
+.fade-section--fade {
+  transform: none;
+}
+
+.fade-section.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .fade-section,
+  .fade-section.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

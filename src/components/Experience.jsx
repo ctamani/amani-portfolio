@@ -3,6 +3,9 @@ import { useState } from "react";
 import { EXPERIENCE_ITEMS } from "../data/experience.js";
 import "../styles/Experience.css";
 import SectionHeading from "./SectionHeading.jsx";
+import FadeInSection from "./FadeInSection.jsx";
+
+const BULLET_STAGGER_MS = 90;
 
 export default function Experience() {
   const [activeExperienceId, setActiveExperienceId] = useState(
@@ -48,7 +51,9 @@ export default function Experience() {
           })}
         </div>
 
-        <article
+        <FadeInSection
+          key={activeExperience.id}
+          as="article"
           id={`experience-panel-${activeExperience.id}`}
           className="experience-panel"
           role="tabpanel"
@@ -67,11 +72,17 @@ export default function Experience() {
           </div>
 
           <ul className="experience-description">
-            {activeExperience.description.map((bullet) => (
-              <li key={bullet}>{bullet}</li>
+            {activeExperience.description.map((bullet, index) => (
+              <FadeInSection
+              key={`${activeExperience.id}-${index}`}
+                as="li"
+                delay={index * BULLET_STAGGER_MS}
+              >
+                {bullet}
+              </FadeInSection>
             ))}
           </ul>
-        </article>
+        </FadeInSection>
       </div>
     </section>
   );

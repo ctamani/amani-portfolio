@@ -5,6 +5,7 @@ import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 import SchoolRoundedIcon from "@mui/icons-material/SchoolRounded";
 
 import "../styles/About.css";
+import FadeInSection from "./FadeInSection.jsx";
 import SectionHeading from "./SectionHeading.jsx";
 
 const ABOUT_TABS = [
@@ -101,18 +102,20 @@ export default function About() {
             ))}
           </div>
 
-          <div
+          <FadeInSection
+            key={activeTab.id}
             className="about-content-page"
             id={`about-panel-${activeTab.id}`}
             role="tabpanel"
             aria-labelledby={`about-tab-${activeTab.id}`}
+            motion="fade"
           >
             <h3>{activeTab.title}</h3>
 
             {activeTab.paragraphs.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
-          </div>
+          </FadeInSection>
         </div>
 
         <div
