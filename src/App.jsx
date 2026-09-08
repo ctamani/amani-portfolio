@@ -1,5 +1,6 @@
 import Intro from "./components/Intro.jsx";
 import NavBar from "./components/NavBar.jsx";
+import About from "./components/About.jsx";
 
 export default function App() {
   return (
@@ -8,6 +9,7 @@ export default function App() {
 
       <main>
         <Intro />
+        <About />
       </main>
     </>
   );

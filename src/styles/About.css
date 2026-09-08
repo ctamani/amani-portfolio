@@ -1,0 +1,402 @@
+.about-notebook {
+  position: relative;
+
+  padding-right: 82px;
+}
+
+.about-book {
+  position: relative;
+
+  min-height: 470px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  overflow: hidden;
+
+  color: #35263c;
+  background: #f1e6de;
+
+  border: 4px solid #8d6473;
+  border-radius: 18px 18px 14px 14px;
+
+  box-shadow:
+    0 10px 0 rgba(53, 38, 60, 0.16),
+    0 20px 34px rgba(53, 38, 60, 0.18);
+}
+
+.about-profile-page,
+.about-content-page {
+  position: relative;
+
+  padding: 38px 42px;
+
+  background:
+    linear-gradient(rgba(186, 128, 88, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(186, 128, 88, 0.035) 1px, transparent 1px),
+    #f1e6de;
+
+  background-size: 22px 22px;
+}
+
+.about-profile-page::after,
+.about-content-page::after {
+  content: "";
+
+  position: absolute;
+  inset: 13px;
+
+  border: 1px solid rgba(186, 128, 88, 0.3);
+
+  pointer-events: none;
+}
+
+.about-profile-page {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  align-items: center;
+  gap: 26px;
+
+  border-right: 1px solid rgba(186, 128, 88, 0.28);
+}
+
+.about-photo-card,
+.about-education,
+.about-signature,
+.about-content-page > * {
+  position: relative;
+  z-index: 1;
+}
+
+.about-photo-card {
+  padding: 14px 14px 15px;
+
+  text-align: center;
+
+  background: #f6d7d8;
+  border: 2px solid #b47b82;
+
+  box-shadow: 3px 4px 0 rgba(186, 128, 88, 0.18);
+}
+
+.about-photo-card img {
+  width: 100%;
+  aspect-ratio: 1;
+
+  display: block;
+
+  object-fit: cover;
+  object-position: 50% 15%;
+
+  background: #f0bfc1;
+
+  image-rendering: pixelated;
+}
+
+.about-photo-card strong {
+  display: block;
+
+  margin-top: 6px;
+
+  font-size: 0.82rem;
+}
+
+.about-education {
+  display: grid;
+  align-content: center;
+  gap: 18px;
+}
+
+.about-school,
+.about-degree {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  align-items: start;
+  gap: 10px;
+}
+
+.about-school svg,
+.about-degree svg {
+  margin-top: 1px;
+
+  color: #4f3556;
+}
+
+.about-school strong,
+.about-degree strong {
+  display: block;
+
+  font-size: 1rem;
+  line-height: 1.15;
+}
+
+.about-degree span {
+  display: block;
+
+  margin-top: 4px;
+
+  color: #624c58;
+
+  font-size: 0.72rem;
+}
+
+.about-signature {
+  position: absolute;
+  bottom: 24px;
+  left: 42px;
+
+  color: #ad6f73;
+
+  font-family: Georgia, serif;
+  font-size: 1.22rem;
+  font-style: italic;
+}
+
+.about-content-page {
+  padding-left: 48px;
+  padding-right: 50px;
+}
+
+.about-content-page h3 {
+  margin: 6px 0 18px;
+
+  color: #35263c;
+
+  font-family: Georgia, serif;
+  font-size: 2rem;
+}
+
+.about-content-page p {
+  margin: 0 0 18px;
+
+  color: #493744;
+
+  font-size: 1.08rem;
+  line-height: 1.55;
+}
+
+.about-binding {
+  position: absolute;
+  z-index: 3;
+
+  top: 24px;
+  bottom: 24px;
+  left: 50%;
+
+  width: 24px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+
+  transform: translateX(-50%);
+
+  pointer-events: none;
+}
+
+.about-binding span {
+  width: 30px;
+  height: 10px;
+
+  background: var(--gold);
+
+  border: 3px solid #6f4757;
+  border-radius: 6px;
+
+  box-shadow: inset 0 0 0 2px #bd8a4c;
+}
+
+.about-tabs {
+  position: absolute;
+
+  top: 18px;
+  right: 0;
+
+  width: 88px;
+
+  display: grid;
+  gap: 4px;
+}
+
+.about-tabs button {
+  min-height: 74px;
+
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 4px;
+
+  color: #35263c;
+  background: #f1d9d2;
+
+  border: 2px solid #8d6473;
+  border-left: 0;
+  border-radius: 0 8px 8px 0;
+
+  font: inherit;
+  font-size: 0.7rem;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.about-tabs button:hover,
+.about-tabs button:focus-visible {
+  background: #f3cbc8;
+}
+
+.about-tabs button.is-active {
+  background: #f0bfc1;
+
+  transform: translateX(5px);
+}
+
+/* TABLET */
+
+@media (max-width: 900px) {
+  .about-notebook {
+    padding-right: 68px;
+  }
+
+  .about-book {
+    min-height: 440px;
+  }
+
+  .about-profile-page,
+  .about-content-page {
+    padding: 32px;
+  }
+
+  .about-profile-page {
+    grid-template-columns: 120px 1fr;
+    gap: 20px;
+  }
+
+  .about-content-page {
+    padding-left: 40px;
+  }
+
+  .about-content-page h3 {
+    font-size: 1.75rem;
+  }
+
+  .about-content-page p {
+    font-size: 1rem;
+  }
+
+  .about-tabs {
+    width: 74px;
+  }
+
+  .about-tabs button {
+    min-height: 68px;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+  .about-notebook {
+    padding-right: 0;
+  }
+
+  .about-book {
+    min-height: auto;
+
+    grid-template-columns: 1fr;
+
+    border-width: 3px;
+  }
+
+  .about-profile-page {
+    grid-template-columns: minmax(100px, 130px) 1fr;
+
+    border-right: 0;
+    border-bottom: 1px solid rgba(186, 128, 88, 0.28);
+  }
+
+  .about-content-page {
+    min-height: 300px;
+
+    padding: 32px;
+  }
+
+  .about-binding {
+    display: none;
+  }
+
+  .about-signature {
+    bottom: 20px;
+    left: 32px;
+  }
+
+  .about-tabs {
+    position: static;
+
+    width: 100%;
+    margin-top: 12px;
+
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .about-tabs button {
+    min-height: 58px;
+
+    border: 2px solid #8d6473;
+    border-radius: 8px;
+  }
+
+  .about-tabs button.is-active {
+    transform: translateY(-3px);
+  }
+}
+
+@media (max-width: 480px) {
+  .about-profile-page {
+    padding: 28px 24px 52px;
+
+    grid-template-columns: 96px 1fr;
+    gap: 16px;
+  }
+
+  .about-school,
+  .about-degree {
+    grid-template-columns: 24px 1fr;
+    gap: 8px;
+  }
+
+  .about-school svg,
+  .about-degree svg {
+    font-size: 1.1rem;
+  }
+
+  .about-school strong,
+  .about-degree strong {
+    font-size: 0.88rem;
+  }
+
+  .about-degree span {
+    font-size: 0.65rem;
+  }
+
+  .about-content-page {
+    padding: 28px 24px;
+  }
+
+  .about-content-page h3 {
+    font-size: 1.55rem;
+  }
+
+  .about-content-page p {
+    font-size: 0.96rem;
+  }
+
+  .about-tabs button {
+    font-size: 0.66rem;
+  }
+}
