@@ -2,7 +2,7 @@ export const PROJECTS = [
   {
     id: "language-app",
     title: "LingoQuest",
-    image: "/images/projects/language-app.png",
+    image: "/images/projects/language-app1.png",
     alt: "Preview of the language learning app project",
     description:
       "A speech-centered English-to-Spanish learning app with spaced repetition, dialogue repair, and lesson state persistence.",

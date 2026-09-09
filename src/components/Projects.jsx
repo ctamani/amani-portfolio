@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ChevronLeftRoundedIcon from "@mui/icons-material/ChevronLeftRounded";
 import ChevronRightRoundedIcon from "@mui/icons-material/ChevronRightRounded";
 import GitHubIcon from "@mui/icons-material/GitHub";
@@ -11,21 +11,62 @@ import FadeInSection from "./FadeInSection.jsx";
 import SectionHeading from "./SectionHeading.jsx";
 
 export default function Projects() {
-  const [activeProjectId, setActiveProjectId] = useState(PROJECTS[0].id);
-  const projectSelectorRef = useRef(null);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [screenView, setScreenView] = useState("library");
 
-  const activeProject =
-    PROJECTS.find(({ id }) => id === activeProjectId) ?? PROJECTS[0];
+  const cartridgeRefs = useRef([]);
 
-  const githubLink = activeProject.githubLink || SITE.github;
+  const activeProject = PROJECTS[selectedIndex];
+
+  const githubLink =
+    activeProject.githubLink || SITE.github;
+
   const hasLiveDemo = Boolean(activeProject.liveLink);
 
-  function scrollProjects(direction) {
-    projectSelectorRef.current?.scrollBy({
-      left: direction * 220,
-      behavior: "smooth",
-    });
+  function changeProject(index) {
+    const totalProjects = PROJECTS.length;
+
+    const wrappedIndex =
+      (index + totalProjects) % totalProjects;
+
+    setSelectedIndex(wrappedIndex);
   }
+
+  function showPreviousProject() {
+    changeProject(selectedIndex - 1);
+  }
+
+  function showNextProject() {
+    changeProject(selectedIndex + 1);
+  }
+
+  function openProject(index) {
+    setSelectedIndex(index);
+    setScreenView("detail");
+  }
+
+  function returnToLibrary() {
+    setScreenView("library");
+  }
+
+  useEffect(() => {
+  if (screenView !== "library") {
+    return;
+  }
+
+  const selectedCartridge =
+    cartridgeRefs.current[selectedIndex];
+
+  if (!selectedCartridge) {
+    return;
+  }
+
+  selectedCartridge.scrollIntoView({
+    behavior: "smooth",
+    block: "nearest",
+    inline: "center",
+  });
+}, [selectedIndex, screenView]);
 
   return (
     <section
@@ -33,56 +74,216 @@ export default function Projects() {
       className="section projects-section"
       aria-labelledby="projects-title"
     >
-      <SectionHeading id="projects-title">projects</SectionHeading>
-
-      {/* PROJECT CONSOLE */}
+      <SectionHeading id="projects-title">
+        projects
+      </SectionHeading>
 
       <div className="project-console">
+        {/* LEFT CONTROLLER */}
+
         <div className="project-console-control project-console-control--left">
-          <div className="project-console-dpad" aria-hidden="true" />
+          <div
+            className="project-console-dpad"
+            aria-hidden="true"
+          />
         </div>
+
+        {/* CENTER SCREEN */}
 
         <div className="project-console-center">
           <div className="project-console-bezel">
             <div className="project-console-screen">
-              <FadeInSection
-                key={activeProject.id}
-                className="project-screen-content"
-                motion="fade"
-              >
-                <div className="project-screen-window">
-                  <div
-                    className="project-screen-window-bar"
-                    aria-hidden="true"
-                  >
-                    <span />
-                    <span />
-                    <span />
+              {screenView === "library" ? (
+                <div className="project-library">
+                  <div className="project-library-heading">
+                    <h3>Pick a Project</h3>
                   </div>
 
-                  <div className="project-screen-preview">
-                    <img
-                      src={activeProject.image}
-                      alt={activeProject.alt}
-                    />
+                  <div className="project-library-carousel">
+                    <button
+                      type="button"
+                      className="project-library-arrow"
+                      onClick={showPreviousProject}
+                      aria-label="Select previous project"
+                    >
+                      <ChevronLeftRoundedIcon />
+                    </button>
+
+                    <div
+                      className="project-library-viewport"
+                    >
+                      <div className="project-library-track">
+                        {PROJECTS.map((project, index) => {
+                          const isSelected =
+                            index === selectedIndex;
+
+                          const cartImage =
+                            project.cartImage ||
+                            project.image;
+
+                          return (
+                            <button
+                              key={project.id}
+                              ref={(element) => {
+                                cartridgeRefs.current[index] =
+                                  element;
+                              }}
+                              type="button"
+                              className={`project-library-cart${
+                                isSelected
+                                  ? " is-selected"
+                                  : ""
+                              }`}
+                              aria-pressed={isSelected}
+                              onClick={() =>
+                                openProject(index)
+                              }
+                            >
+                              <div className="project-cart-shell">
+                                <div className="project-cart-title">
+                                  <span>
+                                    {project.cartTitle ||
+                                      project.title}
+                                  </span>
+                                </div>
+
+                                <div className="project-cart-preview">
+                                  {cartImage ? (
+                                    <img
+                                      src={cartImage}
+                                      alt=""
+                                    />
+                                  ) : (
+                                    <span className="project-cart-placeholder">
+                                      PROJECT
+                                    </span>
+                                  )}
+                                </div>
+
+                                <span
+                                  className="project-cart-arrow"
+                                  aria-hidden="true"
+                                />
+                              </div>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+
+                    <button
+                      type="button"
+                      className="project-library-arrow"
+                      onClick={showNextProject}
+                      aria-label="Select next project"
+                    >
+                      <ChevronRightRoundedIcon />
+                    </button>
                   </div>
-                </div>
 
-                <div className="project-screen-info">
-                  <h3>{activeProject.title}</h3>
-
-                  <p>{activeProject.description}</p>
-
-                  <ul className="project-screen-stack">
-                    {activeProject.stack.map((technology) => (
-                      <li key={technology}>{technology}</li>
+                  <div className="project-library-pagination">
+                    {PROJECTS.map((project, index) => (
+                      <button
+                        key={project.id}
+                        type="button"
+                        className={
+                          index === selectedIndex
+                            ? "is-active"
+                            : ""
+                        }
+                        aria-label={`Select ${project.title}`}
+                        onClick={() =>
+                          changeProject(index)
+                        }
+                      />
                     ))}
-                  </ul>
+                  </div>
                 </div>
-              </FadeInSection>
+              ) : (
+                <FadeInSection
+                  key={activeProject.id}
+                  className="project-detail"
+                  motion="fade"
+                >
+                  <div className="project-detail-header">
+                    <button
+                      type="button"
+                      className="project-library-back"
+                      onClick={returnToLibrary}
+                    >
+                      <ChevronLeftRoundedIcon />
+                      Library
+                    </button>
+                  </div>
+
+                  <div className="project-detail-body">
+                    <div className="project-detail-window">
+                      <div
+                        className="project-detail-window-bar"
+                        aria-hidden="true"
+                      >
+                        <span />
+                        <span />
+                        <span />
+                      </div>
+
+                      <div className="project-detail-preview">
+                        {activeProject.image ? (
+                          <img
+                            src={activeProject.image}
+                            alt={activeProject.alt}
+                          />
+                        ) : (
+                          <div className="project-detail-no-preview">
+                            Project Preview
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="project-detail-info">
+                      <h3>{activeProject.title}</h3>
+
+                      <p>
+                        {activeProject.description}
+                      </p>
+
+                      <ul className="project-detail-stack">
+                        {activeProject.stack.map(
+                          (technology) => (
+                            <li key={technology}>
+                              {technology}
+                            </li>
+                          ),
+                        )}
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="project-detail-navigation">
+                    <button
+                      type="button"
+                      onClick={showPreviousProject}
+                    >
+                      <ChevronLeftRoundedIcon />
+                      Prev
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={showNextProject}
+                    >
+                      Next
+                      <ChevronRightRoundedIcon />
+                    </button>
+                  </div>
+                </FadeInSection>
+              )}
             </div>
           </div>
         </div>
+
+        {/* RIGHT CONTROLLER */}
 
         <div className="project-console-control project-console-control--right">
           <div className="project-console-actions">
@@ -108,7 +309,7 @@ export default function Projects() {
             )}
 
             <a
-              className="project-console-action project-console-action--github"
+              className="project-console-action"
               href={githubLink}
               target="_blank"
               rel="noreferrer"
@@ -118,68 +319,6 @@ export default function Projects() {
               <GitHubIcon />
             </a>
           </div>
-        </div>
-      </div>
-
-      {/* CARTRIDGE SELECTOR */}
-
-      <div className="project-picker">
-        <p className="project-picker-label">pick a project</p>
-
-        <div className="project-picker-row">
-          <button
-            type="button"
-            className="project-picker-scroll-button"
-            onClick={() => scrollProjects(-1)}
-            aria-label="Scroll projects left"
-          >
-            <ChevronLeftRoundedIcon />
-          </button>
-
-          <div
-            ref={projectSelectorRef}
-            className="project-selector"
-          >
-            {PROJECTS.map((project) => {
-              const isActive = project.id === activeProjectId;
-
-              return (
-                <button
-                  key={project.id}
-                  type="button"
-                  className={`project-selector-button${
-                    isActive ? " is-active" : ""
-                  }`}
-                  aria-pressed={isActive}
-                  onClick={() => setActiveProjectId(project.id)}
-                >
-                  <div className="project-cart-shell">
-                    <div className="project-cart-title">
-                      <h3>{project.title}</h3>
-                    </div>
-
-                    <div className="project-cart-preview">
-                      <img src={project.image} alt="" />
-                    </div>
-
-                    <span
-                      className="project-cart-arrow"
-                      aria-hidden="true"
-                    />
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-
-          <button
-            type="button"
-            className="project-picker-scroll-button"
-            onClick={() => scrollProjects(1)}
-            aria-label="Scroll projects right"
-          >
-            <ChevronRightRoundedIcon />
-          </button>
         </div>
       </div>
     </section>
