@@ -1,7 +1,7 @@
 export const PROJECTS = [
   {
     id: "language-app",
-    title: "Language Learning App",
+    title: "LingoQuest",
     image: "/images/projects/language-app.png",
     alt: "Preview of the language learning app project",
     description:
@@ -12,7 +12,7 @@ export const PROJECTS = [
   },
   {
     id: "rag-chatbot",
-    title: "IIT RAG Chatbot",
+    title: "IIT Chatbot",
     image: "/images/projects/rag-chatbot.png",
     alt: "Preview of the IIT RAG chatbot project",
     description:
