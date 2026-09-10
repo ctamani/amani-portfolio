@@ -3,83 +3,129 @@ import DescriptionRoundedIcon from "@mui/icons-material/DescriptionRounded";
 import EmailRoundedIcon from "@mui/icons-material/EmailRounded";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import { useEffect, useState } from "react";
 
 import { EMAIL_LINK, SITE } from "../config/site.js";
 import "../styles/Connect.css";
 import SectionHeading from "./SectionHeading.jsx";
 
-const LAPTOP_IMAGE = "/images/connect/typing-laptop2.png";
+const LAPTOP_IMAGE = "/images/connect/typing-laptop.png";
 
 const FORM_ENDPOINT = "https://formspree.io/f/my-form-id";
 
-const LAPTOP_LINKS = [
-  {
-    label: "Email",
-    href: EMAIL_LINK,
-    Icon: EmailRoundedIcon,
-    className: "connect-screen-link--email",
-    external: false,
-  },
+const DESKTOP_LINKS = [
   {
     label: "LinkedIn",
     href: SITE.linkedin,
     Icon: LinkedInIcon,
-    className: "connect-screen-link--linkedin",
+    className: "is-linkedin",
     external: true,
   },
   {
     label: "GitHub",
     href: SITE.github,
     Icon: GitHubIcon,
-    className: "connect-screen-link--github",
+    className: "is-github",
     external: true,
+  },
+  {
+    label: "Email",
+    href: EMAIL_LINK,
+    Icon: EmailRoundedIcon,
+    className: "is-email",
+    external: false,
   },
   {
     label: "Resume",
     href: SITE.resume,
     Icon: DescriptionRoundedIcon,
-    className: "connect-screen-link--resume",
+    className: "is-resume",
     external: true,
   },
 ];
 
-function ConnectLaptop() {
+function LaptopDesktop() {
   return (
     <div className="connect-laptop">
       <img
         className="connect-laptop-image"
         src={LAPTOP_IMAGE}
-        alt="Pixel-art laptop with hands typing"
+        alt="Pixel-art laptop displaying a grassy desktop background"
       />
 
-      <div className="connect-screen-copy">
-        <p className="connect-screen-kicker">let&apos;s connect</p>
-
-        <h3>
-          good conversations
-          <span> lead to great things.</span>
-        </h3>
-
-        <div
-          className="connect-screen-links"
-          aria-label="Quick contact links"
+      <div className="connect-desktop">
+        <nav
+          className="connect-desktop-icons"
+          aria-label="Contact shortcuts"
         >
-          {LAPTOP_LINKS.map(
+          {DESKTOP_LINKS.map(
             ({ label, href, Icon, className, external }) => (
               <a
                 key={label}
-                className={`connect-screen-link ${className}`}
+                className={`connect-desktop-icon ${className}`}
                 href={href}
                 aria-label={label}
                 title={label}
                 {...(external
-                  ? { target: "_blank", rel: "noreferrer" }
+                  ? {
+                      target: "_blank",
+                      rel: "noreferrer",
+                    }
                   : {})}
               >
-                <Icon aria-hidden="true" />
+                <span className="connect-desktop-icon-image">
+                  <Icon aria-hidden="true" />
+                </span>
               </a>
-            )
+            ),
           )}
+        </nav>
+
+        <div className="connect-notepad">
+          <div className="connect-notepad-titlebar">
+            <div className="connect-notepad-title">
+              <span
+                className="connect-notepad-app-icon"
+                aria-hidden="true"
+              />
+              <span>Untitled - Notepad</span>
+            </div>
+
+            <div
+              className="connect-notepad-controls"
+              aria-hidden="true"
+            >
+              <span>_</span>
+              <span>□</span>
+              <span>×</span>
+            </div>
+          </div>
+
+          <div
+            className="connect-notepad-menu"
+            aria-hidden="true"
+          >
+            <span>File</span>
+            <span>Edit</span>
+            <span>Search</span>
+            <span>Help</span>
+          </div>
+
+          <div className="connect-notepad-body">
+          <p
+            className="connect-typed-message"
+            aria-label="good conversations lead to great things."
+          >
+            <TypedConnectMessage />
+
+            <span
+              className="connect-notepad-cursor"
+              aria-hidden="true"
+            >
+              |
+            </span>
+          </p>
+        </div>
         </div>
       </div>
     </div>
@@ -94,7 +140,9 @@ function ContactForm() {
       method="POST"
     >
       <div className="connect-form-copy">
-        <p className="connect-form-kicker">contact me</p>
+        <p className="connect-form-kicker">
+          contact me
+        </p>
       </div>
 
       <input
@@ -105,6 +153,7 @@ function ContactForm() {
 
       <label className="connect-field">
         <span>Name</span>
+
         <input
           type="text"
           name="name"
@@ -116,6 +165,7 @@ function ContactForm() {
 
       <label className="connect-field">
         <span>Email</span>
+
         <input
           type="email"
           name="email"
@@ -127,18 +177,75 @@ function ContactForm() {
 
       <label className="connect-field">
         <span>Message</span>
+
         <textarea
           name="message"
-          placeholder="Your message here..."
+          placeholder="Your message"
           required
         />
       </label>
 
-      <button type="submit" className="connect-submit">
+      <button
+        type="submit"
+        className="connect-submit"
+      >
         <span>Send message</span>
         <ArrowForwardRoundedIcon aria-hidden="true" />
       </button>
     </form>
+  );
+}
+const CONNECT_MESSAGE = "good conversations\nlead to great things.";
+const MESSAGE_START_DELAY = 450;
+const MESSAGE_TYPING_INTERVAL = 60;
+
+function TypedConnectMessage() {
+  const [visibleLength, setVisibleLength] = useState(() => {
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    return prefersReducedMotion ? CONNECT_MESSAGE.length : 0;
+  });
+
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (prefersReducedMotion) {
+      return;
+    }
+
+    let intervalId;
+
+    const timeoutId = window.setTimeout(() => {
+      intervalId = window.setInterval(() => {
+        setVisibleLength((length) => {
+          const nextLength = length + 1;
+
+          if (nextLength >= CONNECT_MESSAGE.length) {
+            window.clearInterval(intervalId);
+          }
+
+          return Math.min(
+            nextLength,
+            CONNECT_MESSAGE.length
+          );
+        });
+      }, MESSAGE_TYPING_INTERVAL);
+    }, MESSAGE_START_DELAY);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+      window.clearInterval(intervalId);
+    };
+  }, []);
+
+  return (
+    <span aria-hidden="true">
+      {CONNECT_MESSAGE.slice(0, visibleLength)}
+    </span>
   );
 }
 
@@ -152,10 +259,12 @@ export default function Connect() {
       aria-labelledby="connect-title"
     >
       <div className="connect-inner">
-        <SectionHeading id="connect-title">let&apos;s connect</SectionHeading>
+        <SectionHeading id="connect-title">
+          let&apos;s connect
+        </SectionHeading>
 
         <div className="connect-layout">
-          <ConnectLaptop />
+          <LaptopDesktop />
           <ContactForm />
         </div>
 

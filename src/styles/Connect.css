@@ -4,11 +4,6 @@
   width: 100%;
   margin: 0;
 
-  /*
-    No bottom padding.
-    The laptop is meant to end directly at the bottom
-    of the section.
-  */
   padding: clamp(84px, 10vh, 120px) 0 0;
 
   overflow: hidden;
@@ -21,11 +16,6 @@
   margin: 0 auto;
 }
 
-.connect-section {
-  flex: 0 1 520px;
-}
-
-
 /* =========================================================
    MAIN LAYOUT
    ========================================================= */
@@ -34,19 +24,12 @@
   margin-top: 44px;
 
   display: grid;
-
   grid-template-columns:
-    minmax(0, 1fr) minmax(280px, 330px);
+    minmax(0, 1fr) minmax(280px, 320px);
 
-  /*
-    Stretch gives the grid one shared row height.
-
-    The laptop chooses bottom alignment below,
-    while the form chooses center alignment.
-  */
   align-items: stretch;
 
-  gap: clamp(30px, 4vw, 52px);
+  gap: clamp(28px, 4vw, 48px);
 }
 
 
@@ -60,9 +43,6 @@
   width: min(100%, 780px);
   margin: 0 auto;
 
-  /*
-    Laptop touches the bottom of the grid row.
-  */
   align-self: end;
 }
 
@@ -78,157 +58,450 @@
 
 
 /* =========================================================
-   LAPTOP SCREEN CONTENT
+   LAPTOP DESKTOP
    ========================================================= */
 
-.connect-screen-copy {
+.connect-desktop {
+  /*
+    these two values resize every shortcut icon at once.
+  */
+  --desktop-icon-size: clamp(31px, 3.8vw, 48px);
+  --desktop-icon-gap: clamp(7px, 1.2vw, 14px);
+
   position: absolute;
 
-  /*
-    Position HTML inside the physical screen
-    area of the laptop artwork.
-  */
-  top: 17.1%;
-  left: 20.2%;
+  top: 6.3%;
+  left: 18.1%;
 
-  width: 57.3%;
-  height: 34.5%;
+  width: 64.3%;
+  height: 43.3%;
 
-  padding: clamp(9px, 1.7vw, 21px);
+  display: grid;
+  grid-template-columns:
+    minmax(70px, 0.62fr) minmax(145px, 1.38fr);
 
-  /*
-    Extra bottom room is reserved for the
-    quick-link icons.
-  */
-  padding-bottom: clamp(43px, 4.8vw, 58px);
+  align-items: center;
 
-  color: #51374c;
+  gap: clamp(8px, 1.3vw, 16px);
+
+  padding:
+    clamp(8px, 1.3vw, 15px) clamp(8px, 1.2vw, 14px);
 
   overflow: hidden;
 }
 
-.connect-screen-kicker {
-  margin: 0 0 7px;
-
-  color: #96667a;
-
-  font-size: clamp(0.46rem, 0.66vw, 0.68rem);
-  font-weight: 800;
-
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.connect-screen-copy h3 {
-  max-width: 520px;
-  margin: 0;
-
-  color: #4f3248;
-
-  font-size: clamp(1.1rem, 2.25vw, 2.2rem);
-  font-weight: 800;
-
-  line-height: 0.98;
-  letter-spacing: -0.035em;
-}
-
-.connect-screen-copy h3 span {
-  display: block;
-
-  color: #b57b55;
-}
-
-.connect-screen-note {
-  max-width: 430px;
-
-  margin: clamp(6px, 0.9vw, 11px) 0 0;
-
-  color: #735869;
-
-  font-size: clamp(0.5rem, 0.78vw, 0.78rem);
-  line-height: 1.38;
-}
-
 
 /* =========================================================
-   LAPTOP QUICK LINKS
+   DESKTOP SHORTCUT ICONS
    ========================================================= */
 
-/*
-  These are absolutely anchored to the laptop screen.
+.connect-desktop-icons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 
-  They DO NOT depend on the amount of text above them,
-  so they remain in the same place when the screen size
-  changes.
-*/
+  place-items: center;
 
-.connect-screen-links {
-  position: absolute;
-
-  left: clamp(9px, 1.7vw, 21px);
-  bottom: clamp(8px, 1.2vw, 14px);
-
-  display: flex;
-  align-items: center;
-
-  gap: clamp(6px, 0.8vw, 9px);
+  gap: var(--desktop-icon-gap);
 }
 
-.connect-screen-link {
-  width: clamp(28px, 3vw, 38px);
-  height: clamp(28px, 3vw, 38px);
+.connect-desktop-icon {
+  width: var(--desktop-icon-size);
+  height: var(--desktop-icon-size);
 
   display: grid;
   place-items: center;
 
-  background: rgba(255, 248, 242, 0.96);
-
-  border: 2px solid rgba(91, 64, 87, 0.2);
-  border-radius: 50%;
-
-  box-shadow:
-    2px 2px 0 rgba(91, 64, 87, 0.14);
+  color: inherit;
+  text-decoration: none;
 
   transition:
-    transform 0.18s ease,
-    box-shadow 0.18s ease,
-    filter 0.18s ease;
+    transform 0.16s ease,
+    filter 0.16s ease;
 }
 
-.connect-screen-link svg {
-  width: 56%;
-  height: 56%;
+.connect-desktop-icon-image {
+  width: 100%;
+  height: 100%;
+
+  display: grid;
+  place-items: center;
 }
 
-.connect-screen-link:hover,
-.connect-screen-link:focus-visible {
-  transform: translateY(-2px);
+.connect-desktop-icon svg {
+  width: 68%;
+  height: 68%;
+}
+
+.connect-desktop-icon:hover,
+.connect-desktop-icon:focus-visible {
+  transform:
+    translateY(-2px) scale(1.06);
+
+  filter: brightness(1.05);
+}
+
+
+/* =========================================================
+   DESKTOP SHORTCUT ICONS
+   ========================================================= */
+
+.connect-desktop-icons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  place-items: center;
+
+  gap: var(--desktop-icon-gap);
+}
+
+.connect-desktop-icon {
+  width: var(--desktop-icon-size);
+  height: var(--desktop-icon-size);
+
+  display: grid;
+  place-items: center;
+
+  color: inherit;
+  text-decoration: none;
+
+  transition:
+    transform 0.16s ease,
+    filter 0.16s ease;
+}
+
+/*
+  No outer tile/background.
+
+  All four now behave like individual desktop icons
+  instead of little UI buttons.
+*/
+.connect-desktop-icon-image {
+  width: 100%;
+  height: 100%;
+
+  display: grid;
+  place-items: center;
+
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.connect-desktop-icon svg {
+  width: 78%;
+  height: 78%;
+
+  filter:
+    drop-shadow(1px 2px 0 rgba(53, 38, 60, 0.22));
+}
+
+.connect-desktop-icon:hover,
+.connect-desktop-icon:focus-visible {
+  transform:
+    translateY(-2px) scale(1.08);
+
+  filter: brightness(1.06);
+}
+
+
+/* =========================================================
+   LINKEDIN
+   ========================================================= */
+
+.connect-desktop-icon.is-linkedin {
+  color: #7894b5;
+}
+
+.connect-desktop-icon.is-linkedin svg {
+  width: 82%;
+  height: 82%;
+}
+
+
+/* =========================================================
+   GITHUB
+   ========================================================= */
+
+.connect-desktop-icon.is-github {
+  color: #514052;
+}
+
+.connect-desktop-icon.is-github svg {
+  width: 84%;
+  height: 84%;
+}
+
+
+/* =========================================================
+   EMAIL
+   ========================================================= */
+
+
+.connect-desktop-icon.is-email .connect-desktop-icon-image {
+  color: var(--gold);
+
+  background: transparent;
+
+  border: 0;
+  border-radius: 0;
+
+  box-shadow: none;
+}
+
+.connect-desktop-icon.is-email svg {
+  width: 82%;
+  height: 82%;
+
+  filter:
+    drop-shadow(1px 2px 0 rgba(53, 38, 60, 0.24));
+}
+
+
+/* =========================================================
+   RESUME
+   ========================================================= */
+
+/*
+  Same idea as Email:
+  no outer square/card.
+*/
+
+.connect-desktop-icon.is-resume .connect-desktop-icon-image {
+  color: #f0d8a7;
+
+  background: transparent;
+
+  border: 0;
+  border-radius: 0;
+
+  box-shadow: none;
+}
+
+.connect-desktop-icon.is-resume svg {
+  width: 78%;
+  height: 78%;
+
+  filter:
+    drop-shadow(1px 2px 0 rgba(53, 38, 60, 0.24));
+}
+
+
+/* =========================================================
+   NOTEPAD WINDOW
+   ========================================================= */
+
+.connect-notepad {
+  width: 100%;
+  max-width: 285px;
+
+  justify-self: end;
+
+  background: #efefeb;
+
+  border:
+    clamp(1px, 0.16vw, 2px) solid #777a77;
 
   box-shadow:
-    3px 4px 0 rgba(91, 64, 87, 0.17);
+    2px 2px 0 rgba(35, 40, 45, 0.25);
 
-  filter: brightness(1.04);
+  overflow: hidden;
 }
 
 
-/* Individual quick-link colors */
+/* =========================================================
+   NOTEPAD TITLE BAR
+   ========================================================= */
 
-.connect-screen-link--email {
-  color: #e76f51;
+.connect-notepad-titlebar {
+  min-height: clamp(11px, 1.2vw, 16px);
+
+  padding-left: clamp(3px, 0.4vw, 5px);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  color: #fff8ef;
+
+  background:
+    linear-gradient(90deg,
+      #7894b5,
+      #7894b5);
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: clamp(0.26rem,
+      0.4vw,
+      0.44rem);
+
+  font-weight: 700;
 }
 
-.connect-screen-link--linkedin {
-  color: #0a66c2;
+.connect-notepad-title {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 3px;
+
+  overflow: hidden;
+
+  white-space: nowrap;
 }
 
-.connect-screen-link--github {
-  color: #24292f;
+.connect-notepad-app-icon {
+  width: clamp(5px, 0.55vw, 7px);
+  height: clamp(5px, 0.55vw, 7px);
+
+  flex: 0 0 auto;
+
+  background:
+    linear-gradient(135deg,
+      #9bb47c 50%,
+      #f5eadb 50%);
+
+  border: 1px solid #4e465e;
 }
 
-.connect-screen-link--resume {
-  color: #d59c32;
+
+/* =========================================================
+   NOTEPAD WINDOW CONTROLS
+   ========================================================= */
+
+.connect-notepad-controls {
+  align-self: stretch;
+
+  display: flex;
 }
 
+.connect-notepad-controls span {
+  width: clamp(9px, 1vw, 13px);
+
+  display: grid;
+  place-items: center;
+
+  color: #3a303b;
+  background: #dcd6cf;
+
+  border-left: 1px solid #817a7d;
+
+  font-size: clamp(0.25rem,
+      0.37vw,
+      0.4rem);
+
+  line-height: 1;
+}
+
+
+/* =========================================================
+   NOTEPAD MENU
+   ========================================================= */
+
+.connect-notepad-menu {
+  height: clamp(9px, 1vw, 13px);
+
+  padding-inline: clamp(4px, 0.5vw, 6px);
+
+  display: flex;
+  align-items: center;
+
+  gap: clamp(5px, 0.7vw, 8px);
+
+  color: #443b43;
+  background: #ddd8d2;
+
+  border-bottom: 1px solid #99938f;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: clamp(0.24rem,
+      0.35vw,
+      0.38rem);
+}
+
+
+/* =========================================================
+   NOTEPAD CONTENT
+   ========================================================= */
+
+/*
+  Reduced from the previous taller window.
+*/
+
+.connect-notepad-body {
+  position: relative;
+
+  min-height: clamp(48px, 6.7vw, 82px);
+
+  padding:
+    clamp(5px, 0.8vw, 9px) clamp(6px, 0.85vw, 10px);
+
+  color: #352d35;
+  background: #fffdf8;
+
+  border:
+    clamp(1px, 0.1vw, 2px) solid #908b87;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+}
+
+.connect-notepad-body p {
+  margin: 0;
+
+  font-size: clamp(0.56rem,
+      1.15vw,
+      1.05rem);
+
+  line-height: 1.06;
+
+  letter-spacing: -0.018em;
+}
+
+.connect-typed-message {
+  margin: 0;
+
+  white-space: pre-line;
+
+  font-size: clamp(0.56rem,
+      1.15vw,
+      1.05rem);
+
+  line-height: 1.06;
+  letter-spacing: -0.018em;
+}
+
+.connect-notepad-cursor {
+  display: inline;
+
+  margin-left: 1px;
+
+  animation:
+    connect-notepad-cursor 1s step-end infinite;
+}
+
+@keyframes connect-notepad-cursor {
+
+  0%,
+  49% {
+    opacity: 1;
+  }
+
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
 
 /* =========================================================
    CONTACT FORM
@@ -236,35 +509,33 @@
 
 .connect-form {
   width: 100%;
-  max-width: 330px;
+  max-width: 320px;
+  height: 80%;
 
-  /*
-    This is what stops the form from hanging down
-    beside the sleeves.
-  */
   align-self: center;
 
-  padding: 17px;
+  padding: 16px;
 
   background: rgba(255, 248, 239, 0.055);
 
   border: 1px solid rgba(255, 248, 239, 0.17);
-  border-radius: 15px;
+  border-radius: 14px;
 
   box-shadow:
     0 12px 26px rgba(53, 38, 60, 0.13);
+    margin-bottom: 64px;
 }
 
 .connect-form-copy {
-  margin-bottom: 10px;
+  margin-bottom: 16px;
 }
 
 .connect-form-kicker {
-  margin: 0 0 4px;
+  margin: 14px 0 4px;
 
   color: var(--gold);
 
-  font-size: 0.66rem;
+  font-size: 0.65rem;
   font-weight: 800;
 
   letter-spacing: 0.12em;
@@ -276,8 +547,8 @@
 
   color: var(--cream);
 
-  font-size: 1.18rem;
-  font-weight: 800;
+  font-size: 1.15rem;
+  font-weight: 700;
 
   line-height: 1.1;
 }
@@ -287,7 +558,7 @@
 
   color: var(--cream-soft);
 
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   line-height: 1.35;
 }
 
@@ -297,7 +568,7 @@
    ========================================================= */
 
 .connect-field {
-  margin-top: 9px;
+  margin-top: 18px;
 
   display: grid;
 
@@ -307,7 +578,7 @@
 .connect-field span {
   color: var(--cream);
 
-  font-size: 0.76rem;
+  font-size: 0.75rem;
   font-weight: 700;
 }
 
@@ -335,11 +606,11 @@
 }
 
 .connect-field input {
-  min-height: 38px;
+  min-height: 37px;
 }
 
 .connect-field textarea {
-  min-height: 76px;
+  min-height: 72px;
 
   resize: vertical;
 }
@@ -365,13 +636,14 @@
    ========================================================= */
 
 .connect-submit {
-  width: 100%;
-  min-height: 40px;
+  min-height: 39px;
 
-  margin-top: 11px;
+  margin-top: 24px;
   padding: 7px 11px;
 
-  display: inline-flex;
+  display: flex;
+  width: fit-content;
+  margin: 24px auto 0;
   align-items: center;
   justify-content: center;
 
@@ -418,24 +690,18 @@
    COPYRIGHT
    ========================================================= */
 
-/*
-  Absolute positioning means copyright does not take
-  up normal layout space and therefore cannot push
-  the laptop upward.
-*/
-
 .connect-copyright {
   position: absolute;
   z-index: 5;
 
   right: 0;
-  bottom: 7px;
+  bottom: 6px;
 
   margin: 0;
 
   color: rgba(255, 248, 239, 0.62);
 
-  font-size: 0.58rem;
+  font-size: 0.86rem;
   letter-spacing: 0.02em;
 
   text-align: right;
@@ -443,15 +709,33 @@
 
 
 /* =========================================================
-   LARGE LAPTOP / SMALL DESKTOP
+   CURSOR ANIMATION
+   ========================================================= */
+
+@keyframes connect-notepad-cursor {
+
+  0%,
+  49% {
+    opacity: 1;
+  }
+
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+
+/* =========================================================
+   LAPTOP-SIZED SCREENS
    ========================================================= */
 
 @media (min-width: 951px) and (max-width: 1250px) {
   .connect-layout {
     grid-template-columns:
-      minmax(0, 1fr) 300px;
+      minmax(0, 1fr) 290px;
 
-    gap: 30px;
+    gap: 28px;
   }
 
   .connect-laptop {
@@ -459,25 +743,9 @@
   }
 
   .connect-form {
-    max-width: 300px;
+    max-width: 290px;
 
-    padding: 15px;
-  }
-
-  .connect-form h3 {
-    font-size: 1.1rem;
-  }
-
-  .connect-form-intro {
-    font-size: 0.75rem;
-  }
-
-  .connect-field {
-    margin-top: 8px;
-  }
-
-  .connect-field textarea {
-    min-height: 68px;
+    padding: 14px;
   }
 }
 
@@ -493,31 +761,19 @@
 
   .connect-layout {
     grid-template-columns:
-      minmax(0, 1fr) minmax(220px, 270px);
+      minmax(0, 1fr) minmax(220px, 260px);
 
-    gap: 22px;
+    gap: 20px;
   }
 
   .connect-laptop {
-    width: min(100%, 680px);
+    width: min(100%, 660px);
   }
 
   .connect-form {
-    max-width: 270px;
+    max-width: 260px;
 
-    padding: 14px;
-  }
-
-  .connect-form h3 {
-    font-size: 1.06rem;
-  }
-
-  .connect-form-intro {
-    font-size: 0.72rem;
-  }
-
-  .connect-field textarea {
-    min-height: 66px;
+    padding: 13px;
   }
 }
 
@@ -528,9 +784,6 @@
 
 @media (max-width: 760px) {
   .connect-section {
-    /*
-      Still NO bottom padding.
-    */
     padding: 72px 0 0;
   }
 
@@ -550,64 +803,30 @@
     display: flex;
     flex-direction: column;
 
-    gap: 28px;
+    gap: 26px;
   }
 
 
-  /* =======================================================
-     FORM FIRST
-     ======================================================= */
+  /* FORM FIRST */
 
   .connect-form {
     order: 1;
 
-    width: min(calc(100% - 28px), 410px);
+    width: min(calc(100% - 28px), 400px);
     max-width: none;
 
     margin: 0 auto;
-    padding: 15px;
+    padding: 14px;
 
     align-self: auto;
-
-    border-radius: 13px;
-  }
-
-  .connect-form-copy {
-    margin-bottom: 9px;
-  }
-
-  .connect-form-kicker {
-    font-size: 0.63rem;
-  }
-
-  .connect-form h3 {
-    font-size: 1.08rem;
-  }
-
-  .connect-form-intro {
-    font-size: 0.76rem;
-  }
-
-  .connect-field {
-    margin-top: 8px;
-  }
-
-  .connect-field textarea {
-    min-height: 72px;
   }
 
 
-  /* =======================================================
-     LAPTOP LAST
-     ======================================================= */
+  /* LAPTOP LAST */
 
   .connect-laptop {
     order: 2;
 
-    /*
-      This is the final normal-flow element.
-      No margin underneath it.
-    */
     width: min(100%, 620px);
 
     margin: 0 auto;
@@ -615,78 +834,53 @@
     align-self: center;
   }
 
-  .connect-laptop-image {
-    width: 100%;
-    height: auto;
 
-    display: block;
+  /* LAPTOP DESKTOP */
+
+  .connect-desktop {
+    --desktop-icon-size: clamp(26px, 7vw, 38px);
+    --desktop-icon-gap: clamp(5px, 1.6vw, 9px);
+
+    grid-template-columns:
+      minmax(56px, 0.58fr) minmax(120px, 1.42fr);
+
+    gap: clamp(5px, 1.6vw, 9px);
+
+    padding:
+      clamp(5px, 1.7vw, 9px);
   }
 
 
-  /* =======================================================
-     MOBILE LAPTOP SCREEN
-     ======================================================= */
+  /* SHORTER MOBILE NOTEPAD */
 
-  .connect-screen-copy {
-    top: 17.1%;
-    left: 20.2%;
-
-    width: 57.3%;
-    height: 34.5%;
-
-    padding: clamp(6px, 2.3vw, 10px);
-
-    /*
-      Fixed icon area.
-    */
-    padding-bottom: clamp(34px, 8vw, 44px);
+  .connect-notepad {
+    max-width: 250px;
   }
 
-  .connect-screen-kicker {
-    display: none;
+  .connect-notepad-body {
+    min-height: clamp(42px,
+        11vw,
+        62px);
+
+    padding: clamp(4px,
+        1.4vw,
+        7px);
   }
 
-  .connect-screen-copy h3 {
-    font-size: clamp(0.86rem,
-        4.5vw,
-        1.4rem);
-
-    line-height: 0.98;
-  }
-
-  .connect-screen-note {
-    margin-top: 5px;
-
+  .connect-notepad-body p {
     font-size: clamp(0.44rem,
-        1.9vw,
-        0.65rem);
-
-    line-height: 1.28;
+        2.7vw,
+        0.76rem);
   }
 
 
-  /* Fixed icons */
-
-  .connect-screen-links {
-    left: clamp(6px, 2vw, 10px);
-    bottom: clamp(5px, 1.7vw, 9px);
-
-    gap: clamp(5px, 1.4vw, 7px);
-  }
-
-  .connect-screen-link {
-    width: clamp(26px, 6.5vw, 33px);
-    height: clamp(26px, 6.5vw, 33px);
-  }
-
-
-  /* Copyright overlays lower-right edge */
+  /* COPYRIGHT */
 
   .connect-copyright {
-    right: 7px;
-    bottom: 4px;
+    right: 6px;
+    bottom: 3px;
 
-    font-size: 0.47rem;
+    font-size: 0.46rem;
   }
 }
 
@@ -697,41 +891,18 @@
 
 @media (max-width: 480px) {
   .connect-layout {
-    gap: 22px;
+    gap: 21px;
   }
 
   .connect-form {
     width: calc(100% - 24px);
 
-    padding: 13px;
-  }
-
-  .connect-form h3 {
-    font-size: 1rem;
-  }
-
-  .connect-form-intro {
-    font-size: 0.72rem;
-  }
-
-  .connect-field span {
-    font-size: 0.72rem;
+    padding: 12px;
   }
 
   .connect-field input,
   .connect-field textarea {
-    /*
-      Prevents automatic zoom on iPhone Safari.
-    */
     font-size: 16px;
-  }
-
-  .connect-field textarea {
-    min-height: 68px;
-  }
-
-  .connect-submit {
-    min-height: 40px;
   }
 
   .connect-laptop {
@@ -740,44 +911,49 @@
     margin: 0;
   }
 
-  .connect-screen-copy {
-    padding: 5px;
-    padding-bottom: 31px;
+  .connect-desktop {
+    --desktop-icon-size: clamp(23px, 7vw, 30px);
+    --desktop-icon-gap: 4px;
+
+    grid-template-columns:
+      54px minmax(0, 1fr);
+
+    gap: 3px;
+
+    padding: 4px;
   }
 
-  .connect-screen-copy h3 {
-    font-size: clamp(0.76rem,
-        4.6vw,
-        1.02rem);
+  .connect-notepad {
+    max-width: none;
   }
 
-  .connect-screen-note {
-    margin-top: 4px;
+  .connect-notepad-titlebar {
+    min-height: 10px;
+  }
 
+  .connect-notepad-menu {
+    height: 8px;
+
+    gap: 3px;
+  }
+
+  .connect-notepad-body {
+    min-height: 40px;
+
+    padding: 4px;
+  }
+
+  .connect-notepad-body p {
     font-size: clamp(0.4rem,
-        1.8vw,
-        0.55rem);
-  }
-
-  .connect-screen-links {
-    left: 5px;
-    bottom: 4px;
-
-    gap: 4px;
-  }
-
-  .connect-screen-link {
-    width: 25px;
-    height: 25px;
-
-    border-width: 1px;
+        2.5vw,
+        0.62rem);
   }
 
   .connect-copyright {
     right: 4px;
-    bottom: 3px;
+    bottom: 2px;
 
-    font-size: 0.43rem;
+    font-size: 0.42rem;
   }
 }
 
@@ -788,10 +964,14 @@
 
 @media (prefers-reduced-motion: reduce) {
 
-  .connect-screen-link,
+  .connect-desktop-icon,
   .connect-field input,
   .connect-field textarea,
   .connect-submit {
     transition: none;
+  }
+
+  .connect-notepad-cursor {
+    animation: none;
   }
 }

@@ -23,7 +23,7 @@ export const PROJECTS = [
   },
   {
     id: "personal-portfolio",
-    title: "Personal Portfolio",
+    title: "Portfolio",
     image: "/images/about-avatar.png",
     alt: "Preview my personal portfolio",
     description:
