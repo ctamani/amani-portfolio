@@ -6,6 +6,7 @@ import { Icon as IconifyIcon } from "@iconify/react";
 import { TECH_STACK } from "../data/techStack.js";
 import "../styles/TechStack.css";
 import FadeInSection from "./FadeInSection.jsx";
+import RetroWindow from "./RetroWindow.jsx";
 import SectionHeading from "./SectionHeading.jsx";
 
 export default function TechStack() {
@@ -14,7 +15,8 @@ export default function TechStack() {
   );
 
   const activeCategory =
-    TECH_STACK.find(({ id }) => id === activeCategoryId) ?? TECH_STACK[0];
+    TECH_STACK.find(({ id }) => id === activeCategoryId) ??
+    TECH_STACK[0];
 
   return (
     <section
@@ -22,19 +24,15 @@ export default function TechStack() {
       className="section stack-section"
       aria-labelledby="stack-title"
     >
-      <SectionHeading id="stack-title">tech stack</SectionHeading>
+      <SectionHeading id="stack-title">
+        tech stack
+      </SectionHeading>
 
-      <div className="stack-browser">
-        <div className="stack-window-bar" aria-hidden="true">
-          <span>tech_stack.exe</span>
-
-          <div className="stack-window-controls">
-            <i />
-            <i />
-            <i />
-          </div>
-        </div>
-
+      <RetroWindow
+        title="tech_stack.exe"
+        menu={activeCategory.label}
+        className="stack-browser"
+      >
         <div className="stack-browser-body">
           <div
             className="stack-category-list"
@@ -48,7 +46,9 @@ export default function TechStack() {
                 <button
                   key={id}
                   id={`stack-tab-${id}`}
-                  className={`stack-category${isActive ? " is-active" : ""}`}
+                  className={`stack-category${
+                    isActive ? " is-active" : ""
+                  }`}
                   type="button"
                   role="tab"
                   aria-selected={isActive}
@@ -77,14 +77,13 @@ export default function TechStack() {
             tabIndex={0}
             motion="fade"
           >
-            <div className="stack-panel-heading">
-              <strong>/ {activeCategory.label}</strong>
-            </div>
-
             <ul className="stack-items-grid">
               {activeCategory.items.map(({ name, icon, Icon }) => (
                 <li key={name}>
-                  <span className="tech-icon-box" aria-hidden="true">
+                  <span
+                    className="tech-icon-box"
+                    aria-hidden="true"
+                  >
                     {icon ? (
                       <IconifyIcon
                         icon={icon}
@@ -94,13 +93,14 @@ export default function TechStack() {
                       <Icon className="tech-icon tech-icon--concept" />
                     )}
                   </span>
+
                   <span>{name}</span>
                 </li>
               ))}
             </ul>
           </FadeInSection>
         </div>
-      </div>
+      </RetroWindow>
     </section>
   );
 }

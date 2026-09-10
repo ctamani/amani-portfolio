@@ -354,80 +354,6 @@
   white-space: nowrap;
 }
 
-.connect-notepad-app-icon {
-  width: clamp(5px, 0.55vw, 7px);
-  height: clamp(5px, 0.55vw, 7px);
-
-  flex: 0 0 auto;
-
-  background:
-    linear-gradient(135deg,
-      #9bb47c 50%,
-      #f5eadb 50%);
-
-  border: 1px solid #4e465e;
-}
-
-
-/* =========================================================
-   NOTEPAD WINDOW CONTROLS
-   ========================================================= */
-
-.connect-notepad-controls {
-  align-self: stretch;
-
-  display: flex;
-}
-
-.connect-notepad-controls span {
-  width: clamp(9px, 1vw, 13px);
-
-  display: grid;
-  place-items: center;
-
-  color: #3a303b;
-  background: #dcd6cf;
-
-  border-left: 1px solid #817a7d;
-
-  font-size: clamp(0.25rem,
-      0.37vw,
-      0.4rem);
-
-  line-height: 1;
-}
-
-
-/* =========================================================
-   NOTEPAD MENU
-   ========================================================= */
-
-.connect-notepad-menu {
-  height: clamp(9px, 1vw, 13px);
-
-  padding-inline: clamp(4px, 0.5vw, 6px);
-
-  display: flex;
-  align-items: center;
-
-  gap: clamp(5px, 0.7vw, 8px);
-
-  color: #443b43;
-  background: #ddd8d2;
-
-  border-bottom: 1px solid #99938f;
-
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
-  font-size: clamp(0.24rem,
-      0.35vw,
-      0.38rem);
-}
-
-
 /* =========================================================
    NOTEPAD CONTENT
    ========================================================= */
@@ -927,15 +853,7 @@
     max-width: none;
   }
 
-  .connect-notepad-titlebar {
-    min-height: 10px;
-  }
-
-  .connect-notepad-menu {
-    height: 8px;
-
-    gap: 3px;
-  }
+ 
 
   .connect-notepad-body {
     min-height: 40px;

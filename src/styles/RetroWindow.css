@@ -1,0 +1,202 @@
+.retro-window {
+    overflow: hidden;
+
+    background: #efefeb;
+
+    border: 2px solid #777a77;
+
+    box-shadow:
+        2px 2px 0 rgba(35, 40, 45, 0.25);
+}
+
+
+/* =========================================================
+   TITLE BAR
+   ========================================================= */
+
+.retro-window-titlebar {
+    min-height: 32px;
+
+    padding-left: 10px;
+
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+
+    color: #fff8ef;
+
+    background: #7894b5;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 0.72rem;
+    font-weight: 700;
+}
+
+.retro-window-title {
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.retro-window-app-icon {
+    width: 10px;
+    height: 10px;
+
+    flex: 0 0 10px;
+
+    background:
+        linear-gradient(135deg,
+            #9bb47c 50%,
+            #f5eadb 50%);
+
+    border: 1px solid #4e465e;
+}
+
+
+/* =========================================================
+   WINDOW CONTROLS
+   ========================================================= */
+
+.retro-window-controls {
+    align-self: stretch;
+
+    display: flex;
+}
+
+.retro-window-controls>span {
+    position: relative;
+
+    width: 30px;
+
+    display: grid;
+    place-items: center;
+
+    background: #ddd8d2;
+
+    border-left: 1px solid #817a7d;
+}
+
+
+/* Minimize */
+
+.retro-window-minimize::before {
+    content: "";
+
+    position: absolute;
+
+    width: 9px;
+    height: 1px;
+
+    bottom: 8px;
+
+    background: #3a303b;
+}
+
+
+/* Maximize */
+
+.retro-window-maximize::before {
+    content: "";
+
+    width: 9px;
+    height: 8px;
+
+    border: 1px solid #3a303b;
+}
+
+
+/* Close */
+
+.retro-window-close::before,
+.retro-window-close::after {
+    content: "";
+
+    position: absolute;
+
+    width: 10px;
+    height: 1px;
+
+    background: #3a303b;
+}
+
+.retro-window-close::before {
+    transform: rotate(45deg);
+}
+
+.retro-window-close::after {
+    transform: rotate(-45deg);
+}
+
+
+/* =========================================================
+   MENU BAR
+   ========================================================= */
+
+.retro-window-menu {
+    min-height: 22px;
+
+    padding: 0 9px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    color: #443b43;
+    background: #ddd8d2;
+
+    border-bottom: 1px solid #99938f;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 0.66rem;
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.retro-window-content {
+    min-width: 0;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 620px) {
+    .retro-window-titlebar {
+        min-height: 29px;
+
+        padding-left: 8px;
+
+        font-size: 0.64rem;
+    }
+
+    .retro-window-controls>span {
+        width: 24px;
+    }
+
+    .retro-window-menu {
+        min-height: 20px;
+
+        padding-inline: 7px;
+
+        font-size: 0.6rem;
+    }
+}
