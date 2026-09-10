@@ -18,8 +18,7 @@ export default function Projects() {
 
   const activeProject = PROJECTS[selectedIndex];
 
-  const githubLink =
-    activeProject.githubLink || SITE.github;
+  const githubLink = activeProject.githubLink || SITE.github;
 
   const hasLiveDemo = Boolean(activeProject.liveLink);
 
@@ -50,23 +49,22 @@ export default function Projects() {
   }
 
   useEffect(() => {
-  if (screenView !== "library") {
-    return;
-  }
+    if (screenView !== "library") {
+      return;
+    }
 
-  const selectedCartridge =
-    cartridgeRefs.current[selectedIndex];
+    const selectedCartridge = cartridgeRefs.current[selectedIndex];
 
-  if (!selectedCartridge) {
-    return;
-  }
+    if (!selectedCartridge) {
+      return;
+    }
 
-  selectedCartridge.scrollIntoView({
-    behavior: "smooth",
-    block: "nearest",
-    inline: "center",
-  });
-}, [selectedIndex, screenView]);
+    selectedCartridge.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+      inline: "center",
+    });
+  }, [selectedIndex, screenView]);
 
   return (
     <section
@@ -109,9 +107,7 @@ export default function Projects() {
                       <ChevronLeftRoundedIcon />
                     </button>
 
-                    <div
-                      className="project-library-viewport"
-                    >
+                    <div className="project-library-viewport">
                       <div className="project-library-track">
                         {PROJECTS.map((project, index) => {
                           const isSelected =
@@ -264,16 +260,18 @@ export default function Projects() {
                     <button
                       type="button"
                       onClick={showPreviousProject}
+                      aria-label="Previous project"
                     >
                       <ChevronLeftRoundedIcon />
-                      Prev
+                      <span>Prev</span>
                     </button>
 
                     <button
                       type="button"
                       onClick={showNextProject}
+                      aria-label="Next project"
                     >
-                      Next
+                      <span>Next</span>
                       <ChevronRightRoundedIcon />
                     </button>
                   </div>

@@ -1,7 +1,7 @@
 export const PROJECTS = [
   {
     id: "language-app",
-    title: "LingoQuest",
+    title: "Language App",
     image: "/images/projects/language-app1.png",
     alt: "Preview of the language learning app project",
     description:
@@ -22,13 +22,13 @@ export const PROJECTS = [
     githubLink: "#",
   },
   {
-    id: "sentiment-study",
-    title: "Sentiment Study",
-    image: "/images/projects/sentiment-dashboard.png",
-    alt: "Preview of the sentiment study dashboard",
+    id: "personal-portfolio",
+    title: "Personal Portfolio",
+    image: "/images/about-avatar.png",
+    alt: "Preview my personal portfolio",
     description:
-      "A comparative study of Logistic Regression and DistilBERT under varying dataset sizes and label-noise levels.",
-    stack: ["Python", "scikit-learn", "DistilBERT", "Streamlit"],
+      "My personal portfolio showcasing my skills and projects.",
+    stack: ["React", "CSS"],
     liveLink: "#",
     githubLink: "#",
   },
