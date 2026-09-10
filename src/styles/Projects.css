@@ -8,8 +8,8 @@
     --console-control-width: 98px;
     --console-edge-padding: 10px;
     --bezel-padding: 11px;
-    --cartridge-width: clamp(150px, min(24cqw, 40cqh), 205px);
-    --cartridge-gap: clamp(16px, 2.2cqw, 24px);
+    --cartridge-width: clamp(175px, min(28cqw, 47cqh), 230px);
+    --cartridge-gap: clamp(18px, 2.5cqw, 28px);
 
     width: 100%;
     height: var(--console-height);
@@ -216,20 +216,33 @@
     height: 100%;
     min-width: 0;
     min-height: 0;
-    padding: clamp(20px, 5cqh, 30px) clamp(12px, 2.2cqw, 20px)
-        clamp(16px, 3.5cqh, 22px);
+
+    padding:
+        clamp(20px, 5cqh, 30px)
+        clamp(12px, 2.2cqw, 20px)
+        clamp(12px, 2.5cqh, 16px);
 
     display: grid;
-    grid-template-rows: auto minmax(0, 1fr) auto;
+
+    /*
+       Heading + carousel.
+       No third row reserved for pagination anymore.
+    */
+    grid-template-rows:
+        auto
+        minmax(0, 1fr);
 }
 
 .project-library-heading {
-    width: min(100%, 650px);
-    margin: 0 auto;
+    position: relative;
+
+    width: 100%;
 }
 
 .project-library-heading h3 {
     margin: 0;
+    padding-left: 20px;
+    text-align: left;
 
     color: var(--cream);
 
@@ -237,6 +250,76 @@
     font-weight: 420;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+}
+
+/* =========================================================
+   PROJECT ARCHIVE CARTRIDGE
+   ========================================================= */
+
+.project-library-archive {
+    position: absolute;
+
+    top: -8px;
+    right: clamp(16px, 3cqw, 28px);
+
+    width: 52px;
+    padding: 0;
+
+    display: block;
+
+    background: transparent;
+    border: 0;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        filter 0.2s ease;
+}
+
+.project-library-archive-image {
+    width: 100%;
+    height: auto;
+
+    display: block;
+    object-fit: contain;
+
+    transition:
+        transform 0.2s ease,
+        filter 0.2s ease;
+}
+
+.project-library-archive:hover,
+.project-library-archive:focus-visible {
+    transform: translateY(-2px);
+}
+
+.project-library-archive:hover .project-library-archive-image,
+.project-library-archive:focus-visible .project-library-archive-image {
+    transform: scale(1.06);
+
+    filter:
+        drop-shadow(0 0 3px rgba(244, 203, 103, 0.85)) drop-shadow(0 0 7px rgba(244, 203, 103, 0.42));
+}
+
+
+/* Same selected glow as the regular cartridges */
+
+.project-library-cart.is-selected .project-archive-cart-image {
+    filter:
+        drop-shadow(0 0 4px rgba(244, 203, 103, 0.95)) drop-shadow(0 0 10px rgba(244, 203, 103, 0.58));
+}
+
+
+/* =========================================================
+   EMPTY ARCHIVE SCREEN
+   ========================================================= */
+
+.project-archive-view {
+    width: 100%;
+    height: 100%;
+
+    padding: 18px 64px;
 }
 
 
@@ -300,15 +383,14 @@
 }
 
 .project-library-viewport {
+    position: relative;
+
     min-width: 0;
     min-height: 0;
 
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow: hidden;
 
-    scroll-behavior: smooth;
     scrollbar-width: none;
-    scroll-snap-type: x proximity;
 }
 
 .project-library-viewport::-webkit-scrollbar {
@@ -317,7 +399,6 @@
 
 .project-library-track {
     width: max-content;
-    min-width: 100%;
     min-height: 100%;
 
     padding:
@@ -327,11 +408,17 @@
 
     display: flex;
     align-items: center;
-    justify-content: center;
+
+    /*
+       Do NOT center the entire collection.
+
+       The selected cartridge itself is
+       centered by the carousel logic.
+    */
+    justify-content: flex-start;
 
     gap: var(--cartridge-gap);
 }
-
 
 /* =========================================================
    CARTRIDGES
@@ -357,8 +444,8 @@
 }
 
 .project-library-cart:not(.is-selected) {
-    opacity: 0.7;
-    transform: scale(0.9);
+    opacity: 0.68;
+    transform: scale(0.88);
 }
 
 .project-library-cart.is-selected {
@@ -366,7 +453,7 @@
     z-index: 2;
 
     opacity: 1;
-    transform: translateY(-5px) scale(1.06);
+    transform: translateY(-6px) scale(1.08);
 }
 
 .project-cart-shell {
@@ -482,54 +569,6 @@
         drop-shadow(0 0 5px rgba(244, 203, 103, 0.7));
 }
 
-/* =========================================================
-   PROJECT ARCHIVE CARTRIDGE
-   ========================================================= */
-
-.project-archive-cart-shell {
-    position: relative;
-
-    width: 100%;
-    aspect-ratio: 677 / 771;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.project-archive-cart-image {
-    width: 100%;
-    height: auto;
-
-    display: block;
-
-    object-fit: contain;
-
-    image-rendering: auto;
-
-    transition:
-        filter 0.25s ease;
-}
-
-
-/* Same selected glow as the regular cartridges */
-
-.project-library-cart.is-selected .project-archive-cart-image {
-    filter:
-        drop-shadow(0 0 4px rgba(244, 203, 103, 0.95)) drop-shadow(0 0 10px rgba(244, 203, 103, 0.58));
-}
-
-
-/* =========================================================
-   EMPTY ARCHIVE SCREEN
-   ========================================================= */
-
-.project-archive-view {
-    width: 100%;
-    height: 100%;
-
-    padding: 18px 64px;
-}
 
 
 /* TABLET */
@@ -591,90 +630,35 @@
    DETAIL VIEW
    ========================================================= */
 
-.project-detail {
+/* =========================================================
+   FULL-SCREEN PROJECT DETAIL
+   ========================================================= */
+
+.project-detail--fullscreen {
     position: relative;
 
     width: 100%;
     height: 100%;
     min-width: 0;
     min-height: 0;
-    padding: 18px 64px;
 
-    display: flex;
-    flex-direction: column;
-
-    overflow: auto;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(244, 203, 103, 0.5) transparent;
-}
-
-.project-detail-header {
-    flex: 0 0 auto;
-    margin-bottom: clamp(10px, 2.5cqh, 16px);
-}
-
-.project-library-back {
     padding: 0;
 
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-
-    color: var(--cream-soft);
-    background: transparent;
-
-    border: 0;
-
-    font: inherit;
-    font-size: 0.76rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-
-    cursor: pointer;
-
-    transition: color 0.2s ease;
-}
-
-.project-library-back svg {
-    width: 20px;
-    height: 20px;
-}
-
-.project-library-back:hover,
-.project-library-back:focus-visible {
-    color: var(--gold);
-}
-
-.project-detail-body {
-    flex: 1 1 auto;
-    min-width: 0;
-    min-height: 0;
-
-    display: grid;
-    grid-template-columns: minmax(0, 1.2fr) minmax(210px, 0.8fr);
-    align-items: center;
-
-    gap: clamp(22px, 4cqw, 38px);
-}
-
-.project-detail-window {
-    min-width: 0;
     overflow: hidden;
 
-    background: #2c222e;
-
-    border: 2px solid rgba(244, 203, 103, 0.4);
-    border-radius: 5px;
+    background: #241a27;
 }
 
-.project-detail-preview {
-    aspect-ratio: 3 / 2;
-    overflow: hidden;
 
-    background: #29212e;
-}
+/* =========================================================
+   BACKGROUND IMAGE
+   ========================================================= */
 
-.project-detail-preview img {
+.project-detail-background {
+    position: absolute;
+
+    inset: 0;
+
     width: 100%;
     height: 100%;
 
@@ -682,101 +666,254 @@
 
     object-fit: cover;
     object-position: center;
+
+    transform: scale(1.01);
+
+    transition:
+        transform 0.5s ease;
 }
 
-.project-detail-no-preview {
-    width: 100%;
-    height: 100%;
 
-    display: flex;
+.project-detail--fullscreen:hover .project-detail-background {
+    transform: scale(1.025);
+}
+
+
+/* =========================================================
+   DARK IMAGE OVERLAY
+   ========================================================= */
+
+.project-detail-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    /*
+       Slight darkness over the whole image,
+       becoming much stronger near the bottom
+       where the text lives.
+    */
+
+    background:
+        linear-gradient(180deg,
+            rgba(31, 22, 33, 0.24) 0%,
+            rgba(31, 22, 33, 0.30) 30%,
+            rgba(31, 22, 33, 0.58) 58%,
+            rgba(31, 22, 33, 0.93) 100%);
+}
+
+
+/* =========================================================
+   LIBRARY / BACK BUTTON
+   ========================================================= */
+
+.project-detail-back {
+    position: absolute;
+
+    z-index: 4;
+
+    top: clamp(16px, 4cqh, 22px);
+    left: clamp(18px, 3.5cqw, 28px);
+
+    padding: 6px 9px 6px 5px;
+
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
 
-    color: rgba(255, 248, 239, 0.55);
-
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-}
-
-.project-detail-info {
-    min-width: 0;
-}
-
-.project-detail-info h3 {
-    margin: 0 0 14px;
+    gap: 2px;
 
     color: var(--cream);
 
-    font-size: clamp(1.35rem, 3.3cqw, 1.75rem);
-    line-height: 1.08;
+    background:
+        rgba(36, 26, 39, 0.44);
+
+    border: 0;
+    border-radius: 4px;
+
+    font: inherit;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(3px);
+
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease;
 }
 
-.project-detail-info p {
+
+.project-detail-back svg {
+    width: 19px;
+    height: 19px;
+}
+
+
+.project-detail-back:hover,
+.project-detail-back:focus-visible {
+    color: var(--gold);
+
+    background:
+        rgba(36, 26, 39, 0.72);
+}
+
+
+/* =========================================================
+   PROJECT COPY
+   ========================================================= */
+
+.project-detail-content {
+    position: absolute;
+
+    z-index: 3;
+
+    right: clamp(30px, 7cqw, 60px);
+    bottom: clamp(28px, 7cqh, 46px);
+    left: clamp(30px, 7cqw, 60px);
+
+    max-width: 650px;
+
+    color: var(--cream);
+}
+
+
+.project-detail-count {
+    margin-bottom: 7px;
+
+    color: var(--gold);
+
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+
+.project-detail-content h3 {
+    margin: 0 0 9px;
+
+    color: var(--cream);
+
+    font-size:
+        clamp(1.8rem, 5cqw, 2.6rem);
+
+    line-height: 1.05;
+
+    text-shadow:
+        0 2px 8px rgba(20, 13, 22, 0.45);
+}
+
+
+.project-detail-content p {
+    max-width: 590px;
+
     margin: 0;
 
-    color: var(--cream-soft);
+    color: rgba(255, 248, 239, 0.92);
 
-    font-size: clamp(0.84rem, 1.9cqw, 0.92rem);
-    line-height: 1.6;
+    font-size:
+        clamp(0.86rem, 2cqw, 1rem);
+
+    line-height: 1.5;
+
+    text-shadow:
+        0 2px 6px rgba(20, 13, 22, 0.4);
 }
 
+
+/* =========================================================
+   TECH STACK
+   ========================================================= */
+
 .project-detail-stack {
-    margin: 17px 0 0;
+    margin: 14px 0 0;
     padding: 0;
 
     display: flex;
     flex-wrap: wrap;
 
-    gap: 8px 11px;
+    gap: 6px 14px;
 
     list-style: none;
 }
 
+
 .project-detail-stack li {
+    position: relative;
+
     color: var(--gold);
 
-    font-size: 0.74rem;
+    font-size: 0.72rem;
     font-weight: 700;
+
+    line-height: 1.4;
 }
 
 
-/* Desktop navigation sits at the screen edges without duplicating markup. */
+/*
+   Tiny separators between technologies.
+*/
+
+.project-detail-stack li:not(:last-child)::after {
+    content: "•";
+
+    margin-left: 14px;
+
+    color: rgba(244, 203, 103, 0.55);
+}
+
+
+/* =========================================================
+   PREVIOUS / NEXT PROJECT
+   ========================================================= */
 
 .project-detail-navigation {
     position: absolute;
+
+    z-index: 4;
+
     top: 50%;
     right: 12px;
     left: 12px;
 
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
 
     transform: translateY(-50%);
+
     pointer-events: none;
 }
 
+
 .project-detail-navigation button {
-    width: 38px;
-    height: 44px;
+    width: 40px;
+    height: 52px;
     padding: 0;
 
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
 
-    color: rgba(255, 248, 239, 0.6);
-    background: rgba(33, 25, 34, 0.42);
+    color:
+        rgba(255, 248, 239, 0.78);
+
+    background:
+        rgba(36, 26, 39, 0.46);
 
     border: 0;
     border-radius: 999px;
 
-    font: inherit;
-
     cursor: pointer;
+
     pointer-events: auto;
+
+    backdrop-filter: blur(3px);
 
     transition:
         color 0.2s ease,
@@ -784,37 +921,30 @@
         transform 0.2s ease;
 }
 
+
 .project-detail-navigation button:hover,
 .project-detail-navigation button:focus-visible {
     color: var(--gold);
-    background: rgba(33, 25, 34, 0.72);
+
+    background:
+        rgba(36, 26, 39, 0.76);
 }
+
 
 .project-detail-navigation button:first-child:hover {
     transform: translateX(-2px);
 }
 
+
 .project-detail-navigation button:last-child:hover {
     transform: translateX(2px);
 }
 
-.project-detail-navigation span {
-    position: absolute;
-
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-
-    clip: rect(0 0 0 0);
-    clip-path: inset(50%);
-    white-space: nowrap;
-}
 
 .project-detail-navigation svg {
-    width: 28px;
-    height: 28px;
+    width: 27px;
+    height: 27px;
 }
-
 
 /* =========================================================
    TABLET: STACK DETAIL CONTENT AND USE BOTTOM NAVIGATION
