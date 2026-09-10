@@ -1,0 +1,797 @@
+.connect-section {
+  position: relative;
+
+  width: 100%;
+  margin: 0;
+
+  /*
+    No bottom padding.
+    The laptop is meant to end directly at the bottom
+    of the section.
+  */
+  padding: clamp(84px, 10vh, 120px) 0 0;
+
+  overflow: hidden;
+}
+
+.connect-inner {
+  position: relative;
+
+  width: min(calc(100% - 48px), var(--content-width));
+  margin: 0 auto;
+}
+
+.connect-section {
+  flex: 0 1 520px;
+}
+
+
+/* =========================================================
+   MAIN LAYOUT
+   ========================================================= */
+
+.connect-layout {
+  margin-top: 44px;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr) minmax(280px, 330px);
+
+  /*
+    Stretch gives the grid one shared row height.
+
+    The laptop chooses bottom alignment below,
+    while the form chooses center alignment.
+  */
+  align-items: stretch;
+
+  gap: clamp(30px, 4vw, 52px);
+}
+
+
+/* =========================================================
+   LAPTOP
+   ========================================================= */
+
+.connect-laptop {
+  position: relative;
+
+  width: min(100%, 780px);
+  margin: 0 auto;
+
+  /*
+    Laptop touches the bottom of the grid row.
+  */
+  align-self: end;
+}
+
+.connect-laptop-image {
+  width: 100%;
+  height: auto;
+
+  display: block;
+
+  user-select: none;
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   LAPTOP SCREEN CONTENT
+   ========================================================= */
+
+.connect-screen-copy {
+  position: absolute;
+
+  /*
+    Position HTML inside the physical screen
+    area of the laptop artwork.
+  */
+  top: 17.1%;
+  left: 20.2%;
+
+  width: 57.3%;
+  height: 34.5%;
+
+  padding: clamp(9px, 1.7vw, 21px);
+
+  /*
+    Extra bottom room is reserved for the
+    quick-link icons.
+  */
+  padding-bottom: clamp(43px, 4.8vw, 58px);
+
+  color: #51374c;
+
+  overflow: hidden;
+}
+
+.connect-screen-kicker {
+  margin: 0 0 7px;
+
+  color: #96667a;
+
+  font-size: clamp(0.46rem, 0.66vw, 0.68rem);
+  font-weight: 800;
+
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.connect-screen-copy h3 {
+  max-width: 520px;
+  margin: 0;
+
+  color: #4f3248;
+
+  font-size: clamp(1.1rem, 2.25vw, 2.2rem);
+  font-weight: 800;
+
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+}
+
+.connect-screen-copy h3 span {
+  display: block;
+
+  color: #b57b55;
+}
+
+.connect-screen-note {
+  max-width: 430px;
+
+  margin: clamp(6px, 0.9vw, 11px) 0 0;
+
+  color: #735869;
+
+  font-size: clamp(0.5rem, 0.78vw, 0.78rem);
+  line-height: 1.38;
+}
+
+
+/* =========================================================
+   LAPTOP QUICK LINKS
+   ========================================================= */
+
+/*
+  These are absolutely anchored to the laptop screen.
+
+  They DO NOT depend on the amount of text above them,
+  so they remain in the same place when the screen size
+  changes.
+*/
+
+.connect-screen-links {
+  position: absolute;
+
+  left: clamp(9px, 1.7vw, 21px);
+  bottom: clamp(8px, 1.2vw, 14px);
+
+  display: flex;
+  align-items: center;
+
+  gap: clamp(6px, 0.8vw, 9px);
+}
+
+.connect-screen-link {
+  width: clamp(28px, 3vw, 38px);
+  height: clamp(28px, 3vw, 38px);
+
+  display: grid;
+  place-items: center;
+
+  background: rgba(255, 248, 242, 0.96);
+
+  border: 2px solid rgba(91, 64, 87, 0.2);
+  border-radius: 50%;
+
+  box-shadow:
+    2px 2px 0 rgba(91, 64, 87, 0.14);
+
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    filter 0.18s ease;
+}
+
+.connect-screen-link svg {
+  width: 56%;
+  height: 56%;
+}
+
+.connect-screen-link:hover,
+.connect-screen-link:focus-visible {
+  transform: translateY(-2px);
+
+  box-shadow:
+    3px 4px 0 rgba(91, 64, 87, 0.17);
+
+  filter: brightness(1.04);
+}
+
+
+/* Individual quick-link colors */
+
+.connect-screen-link--email {
+  color: #e76f51;
+}
+
+.connect-screen-link--linkedin {
+  color: #0a66c2;
+}
+
+.connect-screen-link--github {
+  color: #24292f;
+}
+
+.connect-screen-link--resume {
+  color: #d59c32;
+}
+
+
+/* =========================================================
+   CONTACT FORM
+   ========================================================= */
+
+.connect-form {
+  width: 100%;
+  max-width: 330px;
+
+  /*
+    This is what stops the form from hanging down
+    beside the sleeves.
+  */
+  align-self: center;
+
+  padding: 17px;
+
+  background: rgba(255, 248, 239, 0.055);
+
+  border: 1px solid rgba(255, 248, 239, 0.17);
+  border-radius: 15px;
+
+  box-shadow:
+    0 12px 26px rgba(53, 38, 60, 0.13);
+}
+
+.connect-form-copy {
+  margin-bottom: 10px;
+}
+
+.connect-form-kicker {
+  margin: 0 0 4px;
+
+  color: var(--gold);
+
+  font-size: 0.66rem;
+  font-weight: 800;
+
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.connect-form h3 {
+  margin: 0;
+
+  color: var(--cream);
+
+  font-size: 1.18rem;
+  font-weight: 800;
+
+  line-height: 1.1;
+}
+
+.connect-form-intro {
+  margin: 5px 0 0;
+
+  color: var(--cream-soft);
+
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+
+
+/* =========================================================
+   FORM FIELDS
+   ========================================================= */
+
+.connect-field {
+  margin-top: 9px;
+
+  display: grid;
+
+  gap: 5px;
+}
+
+.connect-field span {
+  color: var(--cream);
+
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.connect-field input,
+.connect-field textarea {
+  width: 100%;
+
+  padding: 8px 10px;
+
+  color: var(--cream);
+  background: rgba(255, 248, 239, 0.065);
+
+  border: 1px solid rgba(255, 248, 239, 0.21);
+  border-radius: 8px;
+
+  font: inherit;
+  font-size: 0.8rem;
+
+  outline: none;
+
+  transition:
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    background-color 0.18s ease;
+}
+
+.connect-field input {
+  min-height: 38px;
+}
+
+.connect-field textarea {
+  min-height: 76px;
+
+  resize: vertical;
+}
+
+.connect-field input::placeholder,
+.connect-field textarea::placeholder {
+  color: rgba(255, 248, 239, 0.46);
+}
+
+.connect-field input:focus,
+.connect-field textarea:focus {
+  background: rgba(255, 248, 239, 0.085);
+
+  border-color: var(--gold);
+
+  box-shadow:
+    0 0 0 3px rgba(244, 203, 103, 0.11);
+}
+
+
+/* =========================================================
+   SEND BUTTON
+   ========================================================= */
+
+.connect-submit {
+  width: 100%;
+  min-height: 40px;
+
+  margin-top: 11px;
+  padding: 7px 11px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  color: var(--background-deep);
+  background: var(--gold);
+
+  border: 1px solid var(--gold);
+  border-radius: 8px;
+
+  box-shadow:
+    3px 3px 0 rgba(53, 38, 60, 0.2);
+
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    filter 0.18s ease;
+}
+
+.connect-submit svg {
+  width: 18px;
+  height: 18px;
+}
+
+.connect-submit:hover,
+.connect-submit:focus-visible {
+  transform: translateY(-2px);
+
+  box-shadow:
+    4px 5px 0 rgba(53, 38, 60, 0.22);
+
+  filter: brightness(1.02);
+}
+
+
+/* =========================================================
+   COPYRIGHT
+   ========================================================= */
+
+/*
+  Absolute positioning means copyright does not take
+  up normal layout space and therefore cannot push
+  the laptop upward.
+*/
+
+.connect-copyright {
+  position: absolute;
+  z-index: 5;
+
+  right: 0;
+  bottom: 7px;
+
+  margin: 0;
+
+  color: rgba(255, 248, 239, 0.62);
+
+  font-size: 0.58rem;
+  letter-spacing: 0.02em;
+
+  text-align: right;
+}
+
+
+/* =========================================================
+   LARGE LAPTOP / SMALL DESKTOP
+   ========================================================= */
+
+@media (min-width: 951px) and (max-width: 1250px) {
+  .connect-layout {
+    grid-template-columns:
+      minmax(0, 1fr) 300px;
+
+    gap: 30px;
+  }
+
+  .connect-laptop {
+    width: min(100%, 720px);
+  }
+
+  .connect-form {
+    max-width: 300px;
+
+    padding: 15px;
+  }
+
+  .connect-form h3 {
+    font-size: 1.1rem;
+  }
+
+  .connect-form-intro {
+    font-size: 0.75rem;
+  }
+
+  .connect-field {
+    margin-top: 8px;
+  }
+
+  .connect-field textarea {
+    min-height: 68px;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 950px) {
+  .connect-inner {
+    width: min(calc(100% - 32px), var(--content-width));
+  }
+
+  .connect-layout {
+    grid-template-columns:
+      minmax(0, 1fr) minmax(220px, 270px);
+
+    gap: 22px;
+  }
+
+  .connect-laptop {
+    width: min(100%, 680px);
+  }
+
+  .connect-form {
+    max-width: 270px;
+
+    padding: 14px;
+  }
+
+  .connect-form h3 {
+    font-size: 1.06rem;
+  }
+
+  .connect-form-intro {
+    font-size: 0.72rem;
+  }
+
+  .connect-field textarea {
+    min-height: 66px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 760px) {
+  .connect-section {
+    /*
+      Still NO bottom padding.
+    */
+    padding: 72px 0 0;
+  }
+
+  .connect-inner {
+    width: 100%;
+  }
+
+  .connect-inner>.section-heading {
+    width: calc(100% - 24px);
+
+    margin-inline: auto;
+  }
+
+  .connect-layout {
+    margin-top: 30px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 28px;
+  }
+
+
+  /* =======================================================
+     FORM FIRST
+     ======================================================= */
+
+  .connect-form {
+    order: 1;
+
+    width: min(calc(100% - 28px), 410px);
+    max-width: none;
+
+    margin: 0 auto;
+    padding: 15px;
+
+    align-self: auto;
+
+    border-radius: 13px;
+  }
+
+  .connect-form-copy {
+    margin-bottom: 9px;
+  }
+
+  .connect-form-kicker {
+    font-size: 0.63rem;
+  }
+
+  .connect-form h3 {
+    font-size: 1.08rem;
+  }
+
+  .connect-form-intro {
+    font-size: 0.76rem;
+  }
+
+  .connect-field {
+    margin-top: 8px;
+  }
+
+  .connect-field textarea {
+    min-height: 72px;
+  }
+
+
+  /* =======================================================
+     LAPTOP LAST
+     ======================================================= */
+
+  .connect-laptop {
+    order: 2;
+
+    /*
+      This is the final normal-flow element.
+      No margin underneath it.
+    */
+    width: min(100%, 620px);
+
+    margin: 0 auto;
+
+    align-self: center;
+  }
+
+  .connect-laptop-image {
+    width: 100%;
+    height: auto;
+
+    display: block;
+  }
+
+
+  /* =======================================================
+     MOBILE LAPTOP SCREEN
+     ======================================================= */
+
+  .connect-screen-copy {
+    top: 17.1%;
+    left: 20.2%;
+
+    width: 57.3%;
+    height: 34.5%;
+
+    padding: clamp(6px, 2.3vw, 10px);
+
+    /*
+      Fixed icon area.
+    */
+    padding-bottom: clamp(34px, 8vw, 44px);
+  }
+
+  .connect-screen-kicker {
+    display: none;
+  }
+
+  .connect-screen-copy h3 {
+    font-size: clamp(0.86rem,
+        4.5vw,
+        1.4rem);
+
+    line-height: 0.98;
+  }
+
+  .connect-screen-note {
+    margin-top: 5px;
+
+    font-size: clamp(0.44rem,
+        1.9vw,
+        0.65rem);
+
+    line-height: 1.28;
+  }
+
+
+  /* Fixed icons */
+
+  .connect-screen-links {
+    left: clamp(6px, 2vw, 10px);
+    bottom: clamp(5px, 1.7vw, 9px);
+
+    gap: clamp(5px, 1.4vw, 7px);
+  }
+
+  .connect-screen-link {
+    width: clamp(26px, 6.5vw, 33px);
+    height: clamp(26px, 6.5vw, 33px);
+  }
+
+
+  /* Copyright overlays lower-right edge */
+
+  .connect-copyright {
+    right: 7px;
+    bottom: 4px;
+
+    font-size: 0.47rem;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+  .connect-layout {
+    gap: 22px;
+  }
+
+  .connect-form {
+    width: calc(100% - 24px);
+
+    padding: 13px;
+  }
+
+  .connect-form h3 {
+    font-size: 1rem;
+  }
+
+  .connect-form-intro {
+    font-size: 0.72rem;
+  }
+
+  .connect-field span {
+    font-size: 0.72rem;
+  }
+
+  .connect-field input,
+  .connect-field textarea {
+    /*
+      Prevents automatic zoom on iPhone Safari.
+    */
+    font-size: 16px;
+  }
+
+  .connect-field textarea {
+    min-height: 68px;
+  }
+
+  .connect-submit {
+    min-height: 40px;
+  }
+
+  .connect-laptop {
+    width: 100%;
+
+    margin: 0;
+  }
+
+  .connect-screen-copy {
+    padding: 5px;
+    padding-bottom: 31px;
+  }
+
+  .connect-screen-copy h3 {
+    font-size: clamp(0.76rem,
+        4.6vw,
+        1.02rem);
+  }
+
+  .connect-screen-note {
+    margin-top: 4px;
+
+    font-size: clamp(0.4rem,
+        1.8vw,
+        0.55rem);
+  }
+
+  .connect-screen-links {
+    left: 5px;
+    bottom: 4px;
+
+    gap: 4px;
+  }
+
+  .connect-screen-link {
+    width: 25px;
+    height: 25px;
+
+    border-width: 1px;
+  }
+
+  .connect-copyright {
+    right: 4px;
+    bottom: 3px;
+
+    font-size: 0.43rem;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .connect-screen-link,
+  .connect-field input,
+  .connect-field textarea,
+  .connect-submit {
+    transition: none;
+  }
+}
