@@ -1,6 +1,6 @@
 :root {
-  --background: #6b5260;
-  --background-deep: #5d4654;
+  --background: #25545c;
+  --background-deep: #031c2b;
   --cream: #fff8ef;
   --cream-soft: #f3e7e3;
   --gold: #f4cb67;
@@ -29,10 +29,11 @@ body {
     ),
     linear-gradient(
       180deg,
-      #705866 0%,
+      #26535b 0%,
       var(--background) 44%,
       var(--background-deep) 100%
     );
+
 
   color: var(--cream);
   font-family: system-ui, sans-serif;

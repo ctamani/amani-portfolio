@@ -17,7 +17,7 @@
   color: #35263c;
   background: #f1e6de;
 
-  border: 4px solid #8d6473;
+  border: 4px solid #1d476b;
   border-radius: 18px 18px 14px 14px;
 
   box-shadow:
@@ -69,11 +69,11 @@
 }
 
 .about-photo-card {
-  padding: 14px 14px 15px;
+  padding: 24px 20px 25px;
 
   text-align: center;
 
-  background: #f6d7d8;
+  background: #ebe2cf;
   border: 2px solid #b47b82;
 
   box-shadow: 3px 4px 0 rgba(186, 128, 88, 0.18);
@@ -88,7 +88,7 @@
   object-fit: cover;
   object-position: 50% 15%;
 
-  background: #f0bfc1;
+  background: #51786d;
 
   image-rendering: pixelated;
 }
@@ -145,7 +145,7 @@
   bottom: 24px;
   left: 42px;
 
-  color: #ad6f73;
+  color: #25545c;
 
   font-family: Georgia, serif;
   font-size: 1.22rem;
@@ -250,7 +250,7 @@
 }
 
 .about-tabs button.is-active {
-  background: #f0bfc1;
+  background: var(--gold);
 
   transform: translateX(5px);
 }

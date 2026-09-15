@@ -1,40 +1,188 @@
+/* =========================================================
+   INTRO SECTION — COLOR PALETTE
+   Change colors here instead of searching through the CSS.
+   ========================================================= */
+
+:root {
+  /* Landscape */
+  --intro-sky: #4586b2;
+  /* Sky / upper background */
+  --intro-ground: var(--background);
+  /* Ground / lower background */
+
+  /* Intro panel */
+  --intro-panel: linear-gradient(to bottom,
+        rgba(33, 72, 77, 0.846) 0%,
+        rgba(33, 72, 77, 0.846) 45%,
+        rgba(33, 72, 77, 0.35) 80%,
+        rgba(33, 72, 77, 0) 100%);
+  /* Dark green text panel */
+
+  /* Text */
+  --intro-cream: var(--cream);
+  /* Main title / secondary link */
+  --intro-cream-soft: var(--cream-soft);
+  /* Description text */
+  --intro-gold: var(--gold);
+  /* Name / cursor / primary button */
+
+  /* Shadows */
+  --intro-text-shadow: rgba(8, 37, 40, 0.20);
+  /* Title shadow */
+  --intro-description-shadow: rgba(8, 37, 40, 0.22);
+  /* Body/link shadow */
+  --intro-button-shadow: rgba(20, 54, 58, 0.34);
+  /* Button shadow */
+  --intro-panel-shadow: rgba(8, 40, 43, 0.12);
+  /* Panel shadow */
+
+  /* Secondary link */
+  --intro-secondary-border: rgba(255, 248, 239, 0.50);
+  /* Link underline */
+}
+
+
+/* =========================================================
+   INTRO SECTION
+   ========================================================= */
+
 .intro-section {
-  width: min(calc(100% - 48px), var(--content-width));
-  min-height: clamp(580px, calc(100svh - 65px), 900px);
+  position: relative;
+  isolation: isolate;
+
+  width: min(calc(100% - 48px), 1490px);
+  min-height: clamp(640px, calc(100svh - 65px), 820px);
   margin: 0 auto;
-  padding: clamp(52px, 8vh, 92px) 0;
+
+  padding: 55px 0 60px;
 
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+  grid-template-columns: minmax(0, 1.35fr) minmax(360px, 0.75fr);
   align-items: center;
-  gap: clamp(40px, 6vw, 88px);
+  gap: 45px;
 }
+
+
+/* =========================================================
+   LANDSCAPE BACKGROUND
+   ========================================================= */
+
+/*
+  Solid fallback/background.
+
+  The upper portion is sky.
+  The lower portion is the site's background color.
+*/
+
+.intro-section::before {
+  content: "";
+
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+
+  width: 100vw;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  background: linear-gradient(to bottom,
+      var(--intro-sky) 0%,
+      var(--intro-sky) 68%,
+      var(--intro-ground) 68%,
+      var(--intro-ground) 100%);
+
+  pointer-events: none;
+}
+
+
+/*
+  Pixel-art landscape.
+
+  Desktop:
+  - Full width
+  - Anchored to the bottom
+*/
+
+.intro-section::after {
+  content: "";
+
+  position: absolute;
+  z-index: -1;
+
+  bottom: 0;
+  left: 50%;
+
+  width: 100vw;
+  height: 100%;
+
+  transform: translateX(-50%);
+
+  background-image: url("/images/heading-background2.png");
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: 100% auto;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   INTRO COPY / TEXT PANEL
+   ========================================================= */
 
 .intro-copy {
   min-width: 0;
-  max-width: 620px;
+  max-width: 760px;
+
+  padding: 30px 38px;
+
+  background: var(--intro-panel);
+
+  border: 1px solid var(--intro-panel-border);
+  border-radius: 24px;
+
+  box-shadow:
+    0 8px 24px var(--intro-panel-shadow);
+
+  backdrop-filter: blur(1.5px);
+  -webkit-backdrop-filter: blur(1.5px);
 }
+
+
+/* =========================================================
+   INTRO TITLE
+   ========================================================= */
 
 .intro-title {
   margin: 0;
 
-  color: var(--cream);
+  color: var(--intro-cream);
 
   font: inherit;
-  font-size: clamp(3.8rem, 6.5vw, 6.2rem);
+  font-size: clamp(3.5rem, 5vw, 5.2rem);
   font-weight: 700;
-  line-height: 0.98;
-  letter-spacing: -0.05em;
+
+  line-height: 1;
+  letter-spacing: -0.04em;
+
   white-space: nowrap;
+
+  text-shadow:
+    0 2px 2px var(--intro-text-shadow);
 }
+
+
+/* Name + blinking cursor */
 
 .intro-name,
 .intro-cursor {
-  color: var(--gold);
+  color: var(--intro-gold);
 }
 
 .intro-cursor {
   display: inline-block;
+
   margin-left: 0.08em;
 
   font-weight: 400;
@@ -46,15 +194,29 @@
   white-space: nowrap;
 }
 
+
+/* =========================================================
+   INTRO DESCRIPTION
+   ========================================================= */
+
 .intro-description {
-  max-width: 560px;
+  max-width: 720px;
+
   margin: 28px 0 0;
 
-  color: var(--cream-soft);
+  color: var(--intro-cream-soft);
 
   font-size: clamp(1rem, 1.5vw, 1.2rem);
   line-height: 1.55;
+
+  text-shadow:
+    0 1px 2px var(--intro-description-shadow);
 }
+
+
+/* =========================================================
+   INTRO ACTIONS
+   ========================================================= */
 
 .intro-actions {
   margin-top: 32px;
@@ -70,6 +232,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
   gap: 8px;
 
   font-weight: 700;
@@ -82,38 +245,63 @@
     transform 0.2s ease;
 }
 
+
+/* =========================================================
+   PRIMARY BUTTON
+   ========================================================= */
+
 .intro-primary-action {
   min-height: 46px;
+
   padding: 10px 24px;
 
   color: var(--background-deep);
-  background: var(--gold);
-  border: 1px solid var(--gold);
+  background: var(--intro-gold);
+
+  border: 1px solid var(--intro-gold);
   border-radius: 4px;
 
-  box-shadow: 3px 3px 0 rgba(53, 38, 60, 0.28);
+  box-shadow:
+    3px 3px 0 var(--intro-button-shadow);
 }
 
 .intro-primary-action:hover,
 .intro-primary-action:focus-visible {
   transform: translateY(-2px);
-  box-shadow: 4px 5px 0 rgba(53, 38, 60, 0.28);
+
+  box-shadow:
+    4px 5px 0 var(--intro-button-shadow);
 }
+
+
+/* =========================================================
+   SECONDARY LINK
+   ========================================================= */
 
 .intro-secondary-action {
   padding: 4px 0;
 
-  color: var(--cream);
+  color: var(--intro-cream);
 
-  border-bottom: 1px solid rgba(255, 248, 239, 0.45);
+  border-bottom:
+    1px solid var(--intro-secondary-border);
+
+  text-shadow:
+    0 1px 2px var(--intro-description-shadow);
 }
 
 .intro-secondary-action:hover,
 .intro-secondary-action:focus-visible {
-  color: var(--gold);
-  border-color: var(--gold);
+  color: var(--intro-gold);
+  border-color: var(--intro-gold);
+
   transform: translateX(3px);
 }
+
+
+/* =========================================================
+   ARTWORK
+   ========================================================= */
 
 .intro-artwork {
   min-width: 0;
@@ -122,6 +310,11 @@
   align-items: center;
   justify-content: center;
 }
+
+
+/* =========================================================
+   CURSOR ANIMATION
+   ========================================================= */
 
 @keyframes intro-cursor-blink {
 
@@ -136,6 +329,22 @@
   }
 }
 
+
+/* =========================================================
+   LARGE DESKTOPS
+   ========================================================= */
+
+@media (min-width: 1920px) {
+  .intro-section::after {
+    background-size: 1920px auto;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
 @media (prefers-reduced-motion: reduce) {
   .intro-cursor {
     animation: none;
@@ -147,44 +356,214 @@
   }
 }
 
+
+/* =========================================================
+   TABLET / MOBILE
+   ========================================================= */
+
 @media (max-width: 760px) {
+
   .intro-section {
-    width: min(calc(100% - 24px), var(--content-width));
+    width: calc(100% - 24px);
     min-height: auto;
-    padding: 40px 0 72px;
+
+    padding: 28px 0 45px;
 
     grid-template-columns: 1fr;
-    grid-template-areas:
-      "artwork"
-      "copy";
 
-    gap: 24px;
+    grid-template-areas:
+      "copy"
+      "artwork";
+
+    gap: 0;
   }
+
+
+  /* -------------------------------------------------------
+     Mobile sky / ground
+     ------------------------------------------------------- */
+
+  .intro-section::before {
+    background: linear-gradient(to bottom,
+        var(--intro-sky) 0%,
+        var(--intro-sky) 48%,
+        var(--intro-ground) 48%,
+        var(--intro-ground) 100%);
+  }
+
+
+  /* -------------------------------------------------------
+     Mobile landscape
+
+     The image is anchored toward the bottom.
+     Extra height lets the landscape extend behind
+     the artwork instead of ending too early.
+     ------------------------------------------------------- */
+
+  .intro-section::after {
+    top: auto;
+    bottom: -100px;
+
+    height: 520px;
+
+    background-position: center bottom;
+    background-size: auto 145%;
+  }
+
+
+  /* -------------------------------------------------------
+     Text panel
+     ------------------------------------------------------- */
+
+    .intro-copy {
+      grid-area: copy;
+  
+      width: 100%;
+      max-width: none;
+  
+      margin: 0;
+      padding: 22px 18px 24px;
+  
+      text-align: center;
+  
+      background: transparent;
+      border: none;
+      box-shadow: none;
+  
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+
+
+  /* -------------------------------------------------------
+     Mobile artwork / girl
+     ------------------------------------------------------- */
+
+  .intro-artwork {
+    grid-area: artwork;
+
+    position: relative;
+    z-index: 1;
+
+    min-height: 280px;
+
+    margin-top: 0;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+
+  /* -------------------------------------------------------
+     Mobile title
+     ------------------------------------------------------- */
+
+  .intro-title {
+    font-size: clamp(2.2rem, 10vw, 4.2rem);
+
+    letter-spacing: -0.04em;
+  }
+
+
+  /* -------------------------------------------------------
+     Mobile description
+     ------------------------------------------------------- */
+
+  .intro-description {
+    max-width: 540px;
+
+    margin: 18px auto 0;
+
+    font-size: 1rem;
+    line-height: 1.45;
+  }
+
+
+  /* -------------------------------------------------------
+     Mobile buttons
+     ------------------------------------------------------- */
+
+  .intro-actions {
+    margin-top: 24px;
+
+    justify-content: center;
+    gap: 18px;
+  }
+
+
+  .intro-primary-action {
+    min-height: 44px;
+
+    padding: 9px 20px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .intro-section {
+    width: calc(100% - 20px);
+
+    padding: 22px 0 35px;
+  }
+
+
+  /* Keep the landscape lower on small phones */
+
+  .intro-section::after {
+    bottom: -120px;
+    height: 500px;
+  }
+
 
   .intro-copy {
     grid-area: copy;
 
-    max-width: 620px;
-    margin: 0 auto;
+    width: 100%;
+    max-width: none;
+
+    margin: 0;
+    padding: 22px 18px 24px;
 
     text-align: center;
+
+    background: transparent;
+    border: none;
+    box-shadow: none;
+
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
 
-  .intro-artwork {
-    grid-area: artwork;
-  }
 
   .intro-title {
-    font-size: clamp(3.2rem, 14vw, 5rem);
+    font-size: clamp(2.2rem, 12vw, 3.6rem);
   }
+
 
   .intro-description {
-    margin: 20px auto 0;
+    font-size: 0.94rem;
+    line-height: 1.45;
   }
 
-  .intro-actions {
-    margin-top: 26px;
 
-    justify-content: center;
+  .intro-actions {
+    margin-top: 21px;
+    gap: 16px;
+  }
+
+
+  .intro-primary-action {
+    padding: 9px 18px;
+  }
+
+
+  .intro-artwork {
+    min-height: 220px;
   }
 }

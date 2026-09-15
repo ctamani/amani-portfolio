@@ -72,7 +72,8 @@ export default function Intro() {
 
         <p className="intro-description">
           I'm a recent Computer Science and Data Science graduate with a passion
-          for machine learning, software engineering, and human-centered technology.
+          for machine learning, software engineering, and human-centered
+          technology.
         </p>
 
         <div className="intro-actions">

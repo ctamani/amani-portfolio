@@ -1,10 +1,6 @@
-/* =========================================================
-   CONSOLE GEOMETRY
-   ========================================================= */
 
 .project-console {
-    /* One bounded height owns the geometry of the entire physical console. */
-    --console-height: clamp(450px, 62svh, 520px);
+    --console-height: clamp(540px, 62svh, 520px);
     --console-control-width: 98px;
     --console-edge-padding: 10px;
     --bezel-padding: 11px;
@@ -67,20 +63,18 @@
 
     position: absolute;
 
-    clip-path: polygon(
-        34% 0,
-        66% 0,
-        66% 34%,
-        100% 34%,
-        100% 66%,
-        66% 66%,
-        66% 100%,
-        34% 100%,
-        34% 66%,
-        0 66%,
-        0 34%,
-        34% 34%
-    );
+    clip-path: polygon(34% 0,
+            66% 0,
+            66% 34%,
+            100% 34%,
+            100% 66%,
+            66% 66%,
+            66% 100%,
+            34% 100%,
+            34% 66%,
+            0 66%,
+            0 34%,
+            34% 34%);
 }
 
 .project-console-dpad::before {
@@ -218,19 +212,16 @@
     min-height: 0;
 
     padding:
-        clamp(20px, 5cqh, 30px)
-        clamp(12px, 2.2cqw, 20px)
-        clamp(12px, 2.5cqh, 16px);
+        clamp(20px, 5cqh, 30px) clamp(12px, 2.2cqw, 20px) clamp(12px, 2.5cqh, 16px);
 
     display: grid;
 
     /*
        Heading + carousel.
-       No third row reserved for pagination anymore.
+       No third row reserved for pagination.
     */
     grid-template-rows:
-        auto
-        minmax(0, 1fr);
+        auto minmax(0, 1fr);
 }
 
 .project-library-heading {
@@ -251,6 +242,7 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
 }
+
 
 /* =========================================================
    PROJECT ARCHIVE CARTRIDGE
@@ -300,14 +292,6 @@
 
     filter:
         drop-shadow(0 0 3px rgba(244, 203, 103, 0.85)) drop-shadow(0 0 7px rgba(244, 203, 103, 0.42));
-}
-
-
-/* Same selected glow as the regular cartridges */
-
-.project-library-cart.is-selected .project-archive-cart-image {
-    filter:
-        drop-shadow(0 0 4px rgba(244, 203, 103, 0.95)) drop-shadow(0 0 10px rgba(244, 203, 103, 0.58));
 }
 
 
@@ -367,8 +351,8 @@
 .project-library-arrow:focus-visible {
     transform: scale(1.15);
     color: var(--cream);
-    box-shadow: none;
 }
+
 .project-library-arrow:first-child:hover {
     transform: translateX(-3px);
 }
@@ -401,8 +385,7 @@
     width: max-content;
     min-height: 100%;
 
-    padding:
-        clamp(18px, 5cqh, 30px) var(--cartridge-gap);
+    padding: clamp(18px, 5cqh, 30px) var(--cartridge-gap);
 
     box-sizing: border-box;
 
@@ -411,14 +394,13 @@
 
     /*
        Do NOT center the entire collection.
-
-       The selected cartridge itself is
-       centered by the carousel logic.
+       The selected cartridge itself is centered by the carousel logic.
     */
     justify-content: flex-start;
 
     gap: var(--cartridge-gap);
 }
+
 
 /* =========================================================
    CARTRIDGES
@@ -470,8 +452,7 @@
 
 .project-library-cart.is-selected .project-cart-shell {
     filter:
-        drop-shadow(0 0 4px rgba(244, 203, 103, 0.95))
-        drop-shadow(0 0 10px rgba(244, 203, 103, 0.58));
+        drop-shadow(0 0 4px rgba(244, 203, 103, 0.95)) drop-shadow(0 0 10px rgba(244, 203, 103, 0.58));
 }
 
 .project-cart-title {
@@ -557,7 +538,7 @@
     pointer-events: none;
 
     transition:
-        background-color 0.20s ease,
+        background-color 0.2s ease,
         filter 0.25s ease;
 }
 
@@ -565,70 +546,9 @@
     background: var(--gold);
 
     filter:
-        drop-shadow(0 0 2px rgba(244, 203, 103, 1))
-        drop-shadow(0 0 5px rgba(244, 203, 103, 0.7));
+        drop-shadow(0 0 2px rgba(244, 203, 103, 1)) drop-shadow(0 0 5px rgba(244, 203, 103, 0.7));
 }
 
-
-
-/* TABLET */
-
-@media (max-width: 820px) {
-    .project-archive-view {
-        padding:
-            16px clamp(16px, 4cqw, 24px) 14px;
-    }
-}
-
-
-/* MOBILE */
-
-@media (max-width: 600px) {
-    .project-archive-view {
-        padding: 14px;
-    }
-}
-
-/* =========================================================
-   PAGINATION
-   ========================================================= */
-
-.project-library-pagination {
-    min-height: 18px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    gap: 9px;
-}
-
-.project-library-pagination button {
-    width: 22px;
-    height: 4px;
-    padding: 0;
-
-    background: rgba(255, 248, 239, 0.3);
-
-    border: 0;
-    border-radius: 999px;
-
-    cursor: pointer;
-
-    transition:
-        width 0.2s ease,
-        background-color 0.2s ease;
-}
-
-.project-library-pagination button.is-active {
-    width: 36px;
-    background: var(--gold);
-}
-
-
-/* =========================================================
-   DETAIL VIEW
-   ========================================================= */
 
 /* =========================================================
    FULL-SCREEN PROJECT DETAIL
@@ -669,10 +589,8 @@
 
     transform: scale(1.01);
 
-    transition:
-        transform 0.5s ease;
+    transition: transform 0.5s ease;
 }
-
 
 .project-detail--fullscreen:hover .project-detail-background {
     transform: scale(1.025);
@@ -697,7 +615,6 @@
        becoming much stronger near the bottom
        where the text lives.
     */
-
     background:
         linear-gradient(180deg,
             rgba(31, 22, 33, 0.24) 0%,
@@ -728,8 +645,7 @@
 
     color: var(--cream);
 
-    background:
-        rgba(36, 26, 39, 0.44);
+    background: rgba(36, 26, 39, 0.44);
 
     border: 0;
     border-radius: 4px;
@@ -748,19 +664,16 @@
         background-color 0.2s ease;
 }
 
-
 .project-detail-back svg {
     width: 19px;
     height: 19px;
 }
 
-
 .project-detail-back:hover,
 .project-detail-back:focus-visible {
     color: var(--gold);
 
-    background:
-        rgba(36, 26, 39, 0.72);
+    background: rgba(36, 26, 39, 0.72);
 }
 
 
@@ -773,56 +686,39 @@
 
     z-index: 3;
 
-    right: clamp(30px, 7cqw, 60px);
-    bottom: clamp(28px, 7cqh, 46px);
-    left: clamp(30px, 7cqw, 60px);
+    left: 50%;
+    bottom: clamp(34px, 8cqh, 54px);
 
-    max-width: 650px;
+    width: min(650px, calc(100% - 60px));
+    transform: translateX(-50%);
 
     color: var(--cream);
+    text-align: center;
 }
-
-
-.project-detail-count {
-    margin-bottom: 7px;
-
-    color: var(--gold);
-
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-}
-
 
 .project-detail-content h3 {
-    margin: 0 0 9px;
+    margin: 0 0 19px;
 
     color: var(--cream);
 
-    font-size:
-        clamp(1.8rem, 5cqw, 2.6rem);
+    font-size: clamp(1.25rem, 6cqw, 1.35rem);
 
     line-height: 1.05;
 
-    text-shadow:
-        0 2px 8px rgba(20, 13, 22, 0.45);
+    text-shadow: 0 2px 8px rgba(20, 13, 22, 0.45);
 }
-
 
 .project-detail-content p {
     max-width: 590px;
 
-    margin: 0;
+    margin: 0 auto;
 
     color: rgba(255, 248, 239, 0.92);
 
-    font-size:
-        clamp(0.86rem, 2cqw, 1rem);
-
+    font-size: clamp(0.86rem, 2cqw, 1rem);
     line-height: 1.5;
 
-    text-shadow:
-        0 2px 6px rgba(20, 13, 22, 0.4);
+    text-shadow: 0 2px 6px rgba(20, 13, 22, 0.4);
 }
 
 
@@ -836,12 +732,12 @@
 
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 
     gap: 6px 14px;
 
     list-style: none;
 }
-
 
 .project-detail-stack li {
     position: relative;
@@ -854,11 +750,9 @@
     line-height: 1.4;
 }
 
-
 /*
    Tiny separators between technologies.
 */
-
 .project-detail-stack li:not(:last-child)::after {
     content: "•";
 
@@ -890,7 +784,6 @@
     pointer-events: none;
 }
 
-
 .project-detail-navigation button {
     width: 40px;
     height: 52px;
@@ -900,11 +793,9 @@
     align-items: center;
     justify-content: center;
 
-    color:
-        rgba(255, 248, 239, 0.78);
+    color: rgba(255, 248, 239, 0.78);
 
-    background:
-        rgba(36, 26, 39, 0.46);
+    background: rgba(36, 26, 39, 0.46);
 
     border: 0;
     border-radius: 999px;
@@ -921,30 +812,26 @@
         transform 0.2s ease;
 }
 
-
 .project-detail-navigation button:hover,
 .project-detail-navigation button:focus-visible {
     color: var(--gold);
 
-    background:
-        rgba(36, 26, 39, 0.76);
+    background: rgba(36, 26, 39, 0.76);
 }
-
 
 .project-detail-navigation button:first-child:hover {
     transform: translateX(-2px);
 }
 
-
 .project-detail-navigation button:last-child:hover {
     transform: translateX(2px);
 }
-
 
 .project-detail-navigation svg {
     width: 27px;
     height: 27px;
 }
+
 
 /* =========================================================
    TABLET: STACK DETAIL CONTENT AND USE BOTTOM NAVIGATION
@@ -957,43 +844,17 @@
         --cartridge-width: clamp(145px, min(28cqw, 34cqh), 180px);
     }
 
+    .project-archive-view {
+        padding: 16px clamp(16px, 4cqw, 24px) 14px;
+    }
+
     .project-detail {
         padding: 16px clamp(16px, 4cqw, 24px) 14px;
     }
 
-    .project-detail-header {
-        margin-bottom: 10px;
-    }
-
-    .project-detail-body {
-        grid-template-columns: 1fr;
-        align-content: center;
-
-        gap: clamp(14px, 2.5cqh, 20px);
-    }
-
-    .project-detail-window {
-        width: min(100%, 440px);
-        margin: 0 auto;
-    }
-
-    .project-detail-info {
-        text-align: center;
-    }
-
-    .project-detail-info h3 {
-        margin-bottom: 9px;
-    }
-
-    .project-detail-info p {
-        line-height: 1.5;
-    }
-
     .project-detail-stack {
         margin-top: 12px;
-        justify-content: center;
     }
-
     .project-detail-navigation {
         position: static;
 
@@ -1023,18 +884,6 @@
     .project-detail-navigation button:hover,
     .project-detail-navigation button:focus-visible {
         background: transparent;
-    }
-
-    .project-detail-navigation span {
-        position: static;
-
-        width: auto;
-        height: auto;
-        overflow: visible;
-
-        clip: auto;
-        clip-path: none;
-        white-space: normal;
     }
 
     .project-detail-navigation svg {
@@ -1138,51 +987,19 @@
         transform: translateY(-4px) scale(1.04);
     }
 
+    .project-archive-view {
+        padding: 14px;
+    }
+
     .project-detail {
         padding: 14px 14px 12px;
     }
 
-    .project-detail-header {
-        margin-bottom: 8px;
-    }
-
-    .project-detail-body {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-
-        gap: clamp(10px, 2.5cqh, 15px);
-    }
-
-    .project-detail-window {
-        width: 100%;
-    }
-
-    .project-detail-window-bar {
-        height: 24px;
-    }
-
-    .project-detail-info {
-        text-align: left;
-    }
-
-    .project-detail-info h3 {
-        font-size: clamp(1.15rem, 6cqw, 1.35rem);
-    }
-
-    .project-detail-info p {
-        font-size: clamp(0.8rem, 4cqw, 0.9rem);
-        line-height: 1.45;
-    }
-
     .project-detail-stack {
-        justify-content: flex-start;
-
-        gap: 6px 9px;
-    }
-
-    .project-detail-stack li {
-        font-size: 0.72rem;
+        width: 100%;
+        align-items: center;
+        margin: 12px auto 0;
+        text-align: center;
     }
 
     .project-detail-navigation {
@@ -1196,6 +1013,7 @@
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
+
     .project-library-cart,
     .project-library-arrow,
     .project-console-action,

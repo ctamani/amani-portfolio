@@ -15,7 +15,7 @@ const ABOUT_TABS = [
     Icon: HomeRoundedIcon,
     title: "About Me",
     paragraphs: [
-      "I’m Amani, a first-generation college graduate with a bachelors in CS and masters in DS. Growing up in a low-income immigrant family along with being the eldest daughter forced me to navigate crucial parts of my life without a traditional support system. Finding opportunities without proper guidance is not easy which showed me first hand how having the right access to information and resources can transform someone’s future.",
+      "I’m Amani, a first-generation college graduate with a bachelors in CS and masters in DS. Growing up in a low-income immigrant family along with being the eldest daughter forced me to navigate crucial parts of my life without a traditional support system. Finding opportunities without proper guidance showed me first hand how having the right access to information and resources can transform someone’s future.",
       "This experience is what drives my decisions today. I am passionate about turning complex ideas into practical, thoughtful solutions that serve and empower diverse communities. I enjoy building systems that make information and resources easily accessible to people and bring forth meaningful change.",
     ],
   },
@@ -66,7 +66,7 @@ export default function About() {
           <div className="about-profile-page">
             <div className="about-photo-card">
               <img
-                src="/images/about-avatar.png"
+                src="/images/about-avatar1.jpg"
                 alt="Pixel-art portrait of Amani"
               />
               <strong>Hi!</strong>

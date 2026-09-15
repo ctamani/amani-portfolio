@@ -1,6 +1,6 @@
 .site-navbar {
   width: 100%;
-  border-bottom: 1px solid var(--line);
+  background: #4586b2;
 }
 
 .navbar-inner {
