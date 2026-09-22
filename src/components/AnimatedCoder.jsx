@@ -41,7 +41,6 @@ export default function AnimatedCoder() {
     <img
       className="coder-animation"
       src={FRAMES[frameIndex]}
-      alt="Pixel-art woman sitting cross-legged and typing on a laptop"
       draggable="false"
     />
   );

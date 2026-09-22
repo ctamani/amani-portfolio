@@ -4,7 +4,7 @@ import About from "./components/About.jsx";
 import Experience from "./components/Experience.jsx";
 import FadeInSection from "./components/FadeInSection.jsx";
 import TechStack from "./components/TechStack.jsx";
-import Projects from "./components/Projects.jsx";
+import ProjectsConsole from "./components/ProjectsConsole.jsx";
 import Connect from "./components/Connect.jsx";
 
 export default function App() {
@@ -26,7 +26,7 @@ export default function App() {
           <TechStack />
         </FadeInSection>
         <FadeInSection>
-          <Projects />
+          <ProjectsConsole />
         </FadeInSection>
         <FadeInSection>
           <Connect />

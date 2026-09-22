@@ -1,0 +1,449 @@
+/* =========================================================
+   CONNECT FORM
+   Paper / postcard style used beside the laptop.
+   ========================================================= */
+
+.connect-form {
+    position: relative;
+    width: 100%;
+    max-width: 370px;
+    align-self: center;
+    margin: 0;
+    padding: 26px 26px 46px;
+
+    color: #352d35;
+    background: #f3e9dc;
+
+    border: 2px solid #b79b77;
+    border-radius: 5px;
+
+    box-shadow:
+        0 4px 0 rgba(84, 60, 54, 0.55),
+        0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* subtle inner paper border */
+
+.connect-form::before {
+    content: "";
+    position: absolute;
+    inset: 8px;
+
+    pointer-events: none;
+
+    border: 1px solid rgba(155, 127, 94, 0.35);
+    border-radius: 2px;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.connect-form-copy {
+    position: relative;
+    z-index: 1;
+
+    margin: 0 0 18px;
+    padding-right: 54px;
+}
+
+.connect-form-kicker {
+    margin: 0;
+
+    color: #352d35;
+
+    font-family: var(--retro-font);
+    font-size: clamp(1.35rem, 1.8vw, 1.7rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+
+    text-transform: none;
+}
+
+.connect-form-intro {
+    display: none;
+}
+
+/* postage stamp */
+
+.connect-form-copy::after {
+    content: "";
+    position: absolute;
+
+    top: -2px;
+    right: 0;
+
+    width: 40px;
+    height: 40px;
+
+    background:
+        #f7eedf;
+
+    border: 2px dashed #b9a182;
+
+    box-shadow:
+        inset 0 0 0 4px rgba(120, 148, 181, 0.14);
+}
+
+/* tiny envelope inside stamp */
+
+.connect-form-copy::before {
+    content: "";
+    position: absolute;
+    z-index: 2;
+
+    top: 10px;
+    right: 10px;
+
+    width: 17px;
+    height: 12px;
+
+    border: 1.5px solid #5d718b;
+
+    background:
+        linear-gradient(145deg,
+            transparent 48%,
+            #5d718b 49% 53%,
+            transparent 54%) left,
+        linear-gradient(215deg,
+            transparent 48%,
+            #5d718b 49% 53%,
+            transparent 54%) right;
+
+    background-size: 50% 100%;
+    background-repeat: no-repeat;
+}
+
+/* =========================================================
+   FIELDS
+   ========================================================= */
+
+.connect-field {
+    position: relative;
+    z-index: 1;
+
+    margin-top: 13px;
+
+    display: grid;
+    gap: 5px;
+}
+
+.connect-field span {
+    color: #352d35;
+
+    font-size: 0.72rem;
+    font-weight: 800;
+}
+
+/* wraps each input + icon */
+
+.connect-control {
+    position: relative;
+}
+
+/* actual MUI icon */
+
+.connect-field-icon {
+    position: absolute;
+    z-index: 2;
+
+    left: 12px;
+    top: 50%;
+
+    width: 18px !important;
+    height: 18px !important;
+
+    color: #586781;
+
+    transform: translateY(-50%);
+
+    pointer-events: none;
+}
+
+/* message icon should sit near top of textarea */
+
+.connect-control-textarea .connect-field-icon {
+    top: 13px;
+    transform: none;
+}
+
+/* shared input styles */
+
+.connect-control input,
+.connect-control textarea {
+    width: 100%;
+
+    color: #352d35;
+    background: #eef0f3;
+
+    border: 1.5px solid #72819a;
+    border-radius: 5px;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.82);
+
+    font: inherit;
+    font-size: 0.78rem;
+
+    outline: none;
+
+    transition:
+        background-color 0.16s ease,
+        border-color 0.16s ease,
+        box-shadow 0.16s ease;
+}
+
+/* input */
+
+.connect-control input {
+    min-height: 40px;
+
+    padding:
+        8px 11px 8px 40px;
+}
+
+/* textarea */
+
+.connect-control textarea {
+    min-height: 96px;
+
+    padding:
+        9px 11px 9px 40px;
+
+    resize: vertical;
+}
+
+/* placeholders */
+
+.connect-control input::placeholder,
+.connect-control textarea::placeholder {
+    color: #8790a3;
+    opacity: 1;
+}
+
+/* focus */
+
+.connect-control input:focus,
+.connect-control textarea:focus {
+    background: #f7f8fa;
+
+    border-color: #d7a72f;
+
+    box-shadow:
+        0 0 0 3px rgba(244, 203, 103, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* =========================================================
+   SEND BUTTON
+   ========================================================= */
+
+.connect-submit {
+    position: relative;
+    z-index: 1;
+
+    width: min(100%, 225px);
+    min-height: 44px;
+
+    margin:
+        18px auto 0;
+
+    padding:
+        8px 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    color: #352d35;
+    background: #f4cb67;
+
+    border: 1.5px solid #7c5d24;
+    border-radius: 5px;
+
+    box-shadow:
+        0 4px 0 #9d7631;
+
+    font: inherit;
+    font-size: 0.8rem;
+    font-weight: 850;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        filter 0.15s ease;
+}
+
+.connect-submit svg {
+    width: 17px;
+    height: 17px;
+}
+
+.connect-submit:hover,
+.connect-submit:focus-visible {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 6px 0 #9d7631;
+
+    filter: brightness(1.025);
+}
+
+.connect-submit:active {
+    transform: translateY(2px);
+
+    box-shadow:
+        0 2px 0 #9d7631;
+}
+
+/* =========================================================
+   LAPTOP-SIZED SCREENS
+   ========================================================= */
+
+@media (min-width: 951px) and (max-width: 1250px) {
+    .connect-form {
+        max-width: 350px;
+
+        padding:
+            24px 22px 30px;
+    }
+
+    .connect-control textarea {
+        min-height: 92px;
+    }
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 950px) {
+    .connect-form {
+        max-width: 315px;
+
+        padding:
+            22px 19px 28px;
+    }
+
+    .connect-form-copy {
+        margin-bottom: 15px;
+        padding-right: 48px;
+    }
+
+    .connect-form-kicker {
+        font-size: 1.25rem;
+    }
+
+    .connect-form-copy::after {
+        width: 36px;
+        height: 36px;
+    }
+
+    .connect-form-copy::before {
+        top: 8px;
+        right: 9px;
+
+        width: 15px;
+        height: 11px;
+    }
+
+    .connect-field-icon {
+        left: 11px;
+
+        width: 16px !important;
+        height: 16px !important;
+    }
+
+    .connect-control input {
+        min-height: 38px;
+        padding-left: 36px;
+    }
+
+    .connect-control textarea {
+        min-height: 86px;
+        padding-left: 36px;
+    }
+
+    .connect-control-textarea .connect-field-icon {
+        top: 12px;
+    }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 760px) {
+    .connect-form {
+        order: 1;
+
+        width: min(calc(100% - 28px),
+                410px);
+
+        max-width: none;
+
+        margin: 0 auto;
+
+        padding:
+            25px 22px 30px;
+
+        align-self: auto;
+    }
+
+    .connect-laptop {
+        order: 2;
+    }
+}
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+    .connect-form {
+        width: calc(100% - 24px);
+
+        padding:
+            23px 17px 27px;
+    }
+
+    .connect-form-copy {
+        padding-right: 44px;
+    }
+
+    .connect-form-kicker {
+        font-size: 1.2rem;
+    }
+
+    .connect-control input,
+    .connect-control textarea {
+        font-size: 16px;
+    }
+
+    .connect-control textarea {
+        min-height: 94px;
+    }
+
+    .connect-submit {
+        width: 100%;
+        max-width: 235px;
+    }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .connect-control input,
+    .connect-control textarea,
+    .connect-submit {
+        transition: none;
+    }
+}

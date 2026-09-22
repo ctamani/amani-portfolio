@@ -1,12 +1,22 @@
 :root {
   --background: #25545c;
-  --background-deep: #031c2b;
+  --background-deep: #25545c;
   --cream: #fff8ef;
   --cream-soft: #f3e7e3;
   --gold: #f4cb67;
   --line: rgba(255, 246, 237, 0.32);
 
   --content-width: 1120px;
+  --page-gutter: 48px;
+  --page-gutter-tablet: 32px;
+  --page-gutter-mobile: 24px;
+
+  --retro-window-bg: #efefeb;
+  --retro-window-border: #777a77;
+  --retro-titlebar: #7894b5;
+  --retro-window-shadow: rgba(35, 40, 45, 0.25);
+  --retro-font: Arial, Helvetica, sans-serif;
+  --sky: #4586b2;
 }
 
 * {
@@ -22,18 +32,13 @@ body {
   min-height: 100vh;
 
   background:
-    radial-gradient(
-      circle at 85% 4%,
+    radial-gradient(circle at 85% 4%,
       rgba(240, 191, 193, 0.1),
-      transparent 28rem
-    ),
-    linear-gradient(
-      180deg,
+      transparent 28rem),
+    linear-gradient(180deg,
       #26535b 0%,
       var(--background) 44%,
-      var(--background-deep) 100%
-    );
-
+      var(--background-deep) 100%);
 
   color: var(--cream);
   font-family: system-ui, sans-serif;
@@ -45,20 +50,20 @@ a {
 }
 
 .section {
-  width: min(calc(100% - 48px), var(--content-width));
+  width: min(calc(100% - var(--page-gutter)), var(--content-width));
   margin: 0 auto;
   padding: clamp(84px, 10vh, 120px) 0;
 }
 
 @media (max-width: 900px) {
   .section {
-    width: min(calc(100% - 32px), var(--content-width));
+    width: min(calc(100% - var(--page-gutter-tablet)), var(--content-width));
   }
 }
 
 @media (max-width: 700px) {
   .section {
-    width: min(calc(100% - 24px), var(--content-width));
+    width: min(calc(100% - var(--page-gutter-mobile)), var(--content-width));
     padding: 72px 0;
   }
 }

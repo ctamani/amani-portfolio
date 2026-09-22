@@ -50,7 +50,7 @@
   position: relative;
   isolation: isolate;
 
-  width: min(calc(100% - 48px), 1490px);
+  width: min(calc(100% - var(--page-gutter)), 1280px);
   min-height: clamp(640px, calc(100svh - 65px), 820px);
   margin: 0 auto;
 
@@ -88,8 +88,8 @@
 
   background: linear-gradient(to bottom,
       var(--intro-sky) 0%,
-      var(--intro-sky) 68%,
-      var(--intro-ground) 68%,
+      var(--intro-sky) 50%,
+      var(--intro-ground) 8%,
       var(--intro-ground) 100%);
 
   pointer-events: none;

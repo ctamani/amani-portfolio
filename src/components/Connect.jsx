@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 
-import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 import DescriptionRoundedIcon from "@mui/icons-material/DescriptionRounded";
 import EmailRoundedIcon from "@mui/icons-material/EmailRounded";
 import GitHubIcon from "@mui/icons-material/GitHub";
@@ -9,13 +8,12 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { EMAIL_LINK, SITE } from "../config/site.js";
 import "../styles/Connect.css";
 
+import ConnectForm from "./ConnectForm.jsx";
 import RetroWindow from "./RetroWindow.jsx";
 import SectionHeading from "./SectionHeading.jsx";
 
 
-const LAPTOP_IMAGE = "/images/connect/typing-laptop.png";
-
-const FORM_ENDPOINT = "https://formspree.io/f/my-form-id";
+const LAPTOP_IMAGE = "/images/connect/typing-laptop1.png";
 
 const CONNECT_MESSAGE =
   "good conversations\nlead to great things.";
@@ -156,14 +154,6 @@ function LaptopDesktop() {
 
         <RetroWindow
           title="Untitled - Notepad"
-          menu={
-            <>
-              <span>File</span>
-              <span>Edit</span>
-              <span>Search</span>
-              <span>Help</span>
-            </>
-          }
           className="connect-notepad"
         >
           <div className="connect-notepad-body">
@@ -188,74 +178,6 @@ function LaptopDesktop() {
 }
 
 
-function ContactForm() {
-  return (
-    <form
-      className="connect-form"
-      action={FORM_ENDPOINT}
-      method="POST"
-    >
-      <div className="connect-form-copy">
-        <p className="connect-form-kicker">
-          contact me
-        </p>
-      </div>
-
-      <input
-        type="hidden"
-        name="_subject"
-        value="New portfolio contact form submission"
-      />
-
-      <label className="connect-field">
-        <span>Name</span>
-
-        <input
-          type="text"
-          name="name"
-          autoComplete="name"
-          placeholder="Your name"
-          required
-        />
-      </label>
-
-      <label className="connect-field">
-        <span>Email</span>
-
-        <input
-          type="email"
-          name="email"
-          autoComplete="email"
-          placeholder="you@example.com"
-          required
-        />
-      </label>
-
-      <label className="connect-field">
-        <span>Message</span>
-
-        <textarea
-          name="message"
-          placeholder="Your message"
-          required
-        />
-      </label>
-
-      <button
-        type="submit"
-        className="connect-submit"
-      >
-        <span>Send message</span>
-
-        <ArrowForwardRoundedIcon
-          aria-hidden="true"
-        />
-      </button>
-    </form>
-  );
-}
-
-
 export default function Connect() {
   const currentYear = new Date().getFullYear();
 
@@ -272,7 +194,7 @@ export default function Connect() {
 
         <div className="connect-layout">
           <LaptopDesktop />
-          <ContactForm />
+          <ConnectForm />
         </div>
 
         <p className="connect-copyright">

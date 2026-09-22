@@ -17,7 +17,7 @@
   color: #35263c;
   background: #f1e6de;
 
-  border: 4px solid #1d476b;
+  border: 6px solid #6d5c47;
   border-radius: 18px 18px 14px 14px;
 
   box-shadow:
@@ -74,7 +74,7 @@
   text-align: center;
 
   background: #ebe2cf;
-  border: 2px solid #b47b82;
+  border: 2px solid #bca774;
 
   box-shadow: 3px 4px 0 rgba(186, 128, 88, 0.18);
 }
@@ -201,7 +201,7 @@
 
   background: var(--gold);
 
-  border: 3px solid #6f4757;
+  border: 3px solid #644d36;
   border-radius: 6px;
 
   box-shadow: inset 0 0 0 2px #bd8a4c;
@@ -228,9 +228,9 @@
   gap: 4px;
 
   color: #35263c;
-  background: #f1d9d2;
+  background: #bda876;
 
-  border: 2px solid #8d6473;
+  border: 2px solid #644d36;
   border-left: 0;
   border-radius: 0 8px 8px 0;
 
@@ -246,7 +246,7 @@
 
 .about-tabs button:hover,
 .about-tabs button:focus-visible {
-  background: #f3cbc8;
+  background: #a28864;
 }
 
 .about-tabs button.is-active {
@@ -347,7 +347,7 @@
   .about-tabs button {
     min-height: 58px;
 
-    border: 2px solid #8d6473;
+    border: 2px solid #6d5c47;
     border-radius: 8px;
   }
 

@@ -11,7 +11,7 @@
   filter: drop-shadow(0 20px 22px rgba(53, 38, 60, 0.18));
 }
 
-@media (max-width: 760px) {
+@media (max-width: 720px) {
   .coder-animation {
     width: min(300px, 72vw);
     max-height: 360px;
