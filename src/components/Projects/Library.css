@@ -1,22 +1,35 @@
 /* Project library, archive shortcut, carousel, and cartridges. */
 
-/* LIBRARY SCREEN */
+/* ========================================
+   LIBRARY SCREEN
+======================================== */
 
 .project-library {
     width: 100%;
     height: 100%;
     min-width: 0;
     min-height: 0;
+
     padding:
         clamp(20px, 5cqh, 30px) clamp(12px, 2.2cqw, 20px) clamp(12px, 2.5cqh, 16px);
+
     display: grid;
-    /*
-       Heading + carousel.
-       No third row reserved for pagination.
-    */
-    grid-template-rows:
-        auto minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
+
+    /* ── Shell overrides ── */
+    --carousel-shell-gap: 8px;
+    --carousel-arrow-svg: 64px;
+    /* big chevrons that match the original */
+    --carousel-arrow-col: 42px;
+    --carousel-arrow-height: 38px;
+    --carousel-track-padding: clamp(18px, 5cqh, 30px) var(--cartridge-gap);
+    --carousel-track-gap: var(--cartridge-gap);
 }
+
+
+/* ========================================
+   HEADING
+======================================== */
 
 .project-library-heading {
     position: relative;
@@ -34,7 +47,10 @@
     text-transform: uppercase;
 }
 
-/* PROJECT ARCHIVE CARTRIDGE */
+
+/* ========================================
+   ARCHIVE SHORTCUT CARTRIDGE
+======================================== */
 
 .project-library-archive {
     position: absolute;
@@ -73,82 +89,10 @@
         drop-shadow(0 0 3px rgba(244, 203, 103, 0.85)) drop-shadow(0 0 7px rgba(244, 203, 103, 0.42));
 }
 
-/* CARTRIDGE CAROUSEL */
 
-.project-library-carousel {
-    min-width: 0;
-    min-height: 0;
-    display: grid;
-    grid-template-columns: 42px minmax(0, 1fr) 42px;
-    align-items: stretch;
-    gap: 8px;
-}
-
-.project-library-arrow {
-    align-self: center;
-    width: 38px;
-    height: 38px;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--gold);
-    background: transparent;
-    border: 0;
-    border-radius: 0;
-    cursor: pointer;
-    box-shadow: none;
-    transition:
-        transform 0.18s ease,
-        color 0.18s ease;
-}
-
-.project-library-arrow:hover,
-.project-library-arrow:focus-visible {
-    transform: scale(1.15);
-    color: var(--cream);
-}
-
-.project-library-arrow:first-child:hover {
-    transform: translateX(-3px);
-}
-
-.project-library-arrow:last-child:hover {
-    transform: translateX(3px);
-}
-
-.project-library-arrow svg {
-    width: 64px;
-    height: 64px;
-}
-
-.project-library-viewport {
-    position: relative;
-    min-width: 0;
-    min-height: 0;
-    overflow: hidden;
-    scrollbar-width: none;
-}
-
-.project-library-viewport::-webkit-scrollbar {
-    display: none;
-}
-
-.project-library-track {
-    width: max-content;
-    min-height: 100%;
-    padding: clamp(18px, 5cqh, 30px) var(--cartridge-gap);
-    display: flex;
-    align-items: center;
-    /*
-       Do NOT center the entire collection.
-       The selected cartridge itself is centered by the carousel logic.
-    */
-    justify-content: flex-start;
-    gap: var(--cartridge-gap);
-}
-
-/* CARTRIDGES */
+/* ========================================
+   CARTRIDGES
+======================================== */
 
 .project-library-cart {
     width: var(--cartridge-width);
@@ -177,11 +121,16 @@
     transform: translateY(-6px) scale(1.08);
 }
 
+
+/* ========================================
+   CART SHELL
+======================================== */
+
 .project-cart-shell {
     position: relative;
     width: 100%;
     aspect-ratio: 677 / 771;
-    background-image: url("/images/project-cart.png");
+    background-image: url("/images/projects/project-cart.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -231,7 +180,6 @@
     display: block;
     object-fit: cover;
     object-position: center;
-    image-rendering: auto;
 }
 
 .project-cart-placeholder {
@@ -263,37 +211,30 @@
 .project-library-cart.is-selected .project-cart-arrow {
     background: var(--gold);
     filter:
-        drop-shadow(0 0 2px rgba(244, 203, 103, 1)) drop-shadow(0 0 5px rgba(244, 203, 103, 0.7));
+        drop-shadow(0 0 2px rgba(244, 203, 103, 1.0)) drop-shadow(0 0 5px rgba(244, 203, 103, 0.7));
 }
 
-/* MOBILE */
+
+/* ========================================
+   MOBILE
+======================================== */
 
 @media (max-width: 600px) {
     .project-library {
         padding: clamp(18px, 4.5cqh, 24px) 8px 16px;
+
+        /* Tighter track on mobile */
+        --carousel-track-padding: clamp(18px, 4.5cqh, 26px) var(--cartridge-gap);
+
+        /* Slightly wider arrows on mobile than the shell default */
+        --carousel-arrow-col: 34px;
+        --carousel-arrow-height: 40px;
+        --carousel-arrow-svg: 41px;
+        --carousel-shell-gap: 2px;
     }
 
     .project-library-heading {
         padding-inline: 12px;
-    }
-
-    .project-library-carousel {
-        grid-template-columns: 34px minmax(0, 1fr) 34px;
-        gap: 2px;
-    }
-
-    .project-library-arrow {
-        width: 30px;
-        height: 30px;
-    }
-
-    .project-library-arrow svg {
-        width: 21px;
-        height: 21px;
-    }
-
-    .project-library-track {
-        padding-block: clamp(18px, 4.5cqh, 26px);
     }
 
     .project-library-cart:not(.is-selected) {
@@ -306,16 +247,17 @@
     }
 }
 
-/* REDUCED MOTION */
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
 
 @media (prefers-reduced-motion: reduce) {
-
-    .project-library-cart,
-    .project-library-arrow {
+    .project-library-cart {
         transition: none;
     }
 
-    .project-library-viewport {
+    .project-carousel-viewport {
         scroll-behavior: auto;
     }
 }

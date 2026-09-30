@@ -1,0 +1,117 @@
+/* ========================================
+   SHARED CAROUSEL SHELL
+   Used by ProjectLibrary and ProjectArchive.
+======================================== */
+
+.project-carousel-shell {
+    min-width: 0;
+    min-height: 0;
+
+    display: grid;
+    grid-template-columns:
+        var(--carousel-arrow-col, 42px)
+        minmax(0, 1fr)
+        var(--carousel-arrow-col, 42px);
+
+    align-items: stretch;
+    gap: var(--carousel-shell-gap, 8px);
+}
+
+
+/* ========================================
+   ARROWS
+======================================== */
+
+.project-carousel-arrow {
+    align-self: center;
+
+    width:  var(--carousel-arrow-col, 42px);
+    height: var(--carousel-arrow-height, 54px);
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--gold);
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+
+    transition:
+        color     0.2s ease,
+        transform 0.2s ease;
+}
+
+.project-carousel-arrow svg {
+    width:  var(--carousel-arrow-svg, 32px);
+    height: var(--carousel-arrow-svg, 32px);
+}
+
+.project-carousel-arrow:hover,
+.project-carousel-arrow:focus-visible {
+    color: var(--cream);
+}
+
+.project-carousel-arrow:first-child:hover { transform: translateX(-3px); }
+.project-carousel-arrow:last-child:hover  { transform: translateX( 3px); }
+
+
+/* ========================================
+   VIEWPORT
+======================================== */
+
+.project-carousel-viewport {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    min-height: 0;
+
+    overflow: hidden;
+    scrollbar-width: none;
+}
+
+.project-carousel-viewport::-webkit-scrollbar { display: none; }
+
+
+/* ========================================
+   TRACK
+======================================== */
+
+.project-carousel-track {
+    width: max-content;
+    min-height: 100%;
+
+    padding: var(--carousel-track-padding, 12px 20px);
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    gap: var(--carousel-track-gap, 16px);
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+    .project-carousel-shell {
+        --carousel-arrow-col:    28px;
+        --carousel-arrow-height: 46px;
+        --carousel-arrow-svg:    23px;
+        gap: 0;
+    }
+}
+
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .project-carousel-arrow { transition: none; }
+}

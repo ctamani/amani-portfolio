@@ -1,15 +1,21 @@
 /* =========================================================
    CONNECT FORM
-   Paper / postcard style used beside the laptop.
+   Compact postcard / mail card
    ========================================================= */
 
 .connect-form {
     position: relative;
+
     width: 100%;
-    max-width: 370px;
+    max-width: 350px;
+
     align-self: center;
+
     margin: 0;
-    padding: 26px 26px 46px;
+    margin-bottom: 28px;
+
+    padding:
+        24px 24px 25px;
 
     color: #352d35;
     background: #f3e9dc;
@@ -18,22 +24,28 @@
     border-radius: 5px;
 
     box-shadow:
-        0 4px 0 rgba(84, 60, 54, 0.55),
-        0 12px 24px rgba(0, 0, 0, 0.12);
+        0 4px 0 rgba(84, 60, 54, 0.48),
+        0 12px 22px rgba(0, 0, 0, 0.13);
 }
 
-/* subtle inner paper border */
+
+/* inner postcard border */
 
 .connect-form::before {
     content: "";
+
     position: absolute;
+
     inset: 8px;
 
     pointer-events: none;
 
-    border: 1px solid rgba(155, 127, 94, 0.35);
+    border:
+        1px solid rgba(155, 127, 94, 0.38);
+
     border-radius: 2px;
 }
+
 
 /* =========================================================
    HEADER
@@ -43,9 +55,11 @@
     position: relative;
     z-index: 1;
 
-    margin: 0 0 18px;
-    padding-right: 54px;
+    margin: 0 0 15px;
+
+    padding-right: 64px;
 }
+
 
 .connect-form-kicker {
     margin: 0;
@@ -53,67 +67,44 @@
     color: #352d35;
 
     font-family: var(--retro-font);
-    font-size: clamp(1.35rem, 1.8vw, 1.7rem);
+
+    font-size:
+        clamp(1.35rem,
+            1.7vw,
+            1.55rem);
+
     font-weight: 800;
-    line-height: 1.05;
+
+    line-height: 1;
+
     letter-spacing: -0.025em;
-
-    text-transform: none;
 }
 
-.connect-form-intro {
-    display: none;
-}
 
-/* postage stamp */
+/* =========================================================
+   POSTAL STAMP
+   ========================================================= */
 
-.connect-form-copy::after {
-    content: "";
+.connect-postal-stamp {
     position: absolute;
 
-    top: -2px;
-    right: 0;
+    top: -7px;
+    right: -1px;
 
-    width: 40px;
-    height: 40px;
+    width: 54px;
+    height: auto;
 
-    background:
-        #f7eedf;
+    display: block;
 
-    border: 2px dashed #b9a182;
+    transform: rotate(2deg);
 
-    box-shadow:
-        inset 0 0 0 4px rgba(120, 148, 181, 0.14);
+    filter:
+        drop-shadow(1px 2px 0 rgba(53, 38, 60, 0.15));
+
+    pointer-events: none;
+    user-select: none;
 }
 
-/* tiny envelope inside stamp */
-
-.connect-form-copy::before {
-    content: "";
-    position: absolute;
-    z-index: 2;
-
-    top: 10px;
-    right: 10px;
-
-    width: 17px;
-    height: 12px;
-
-    border: 1.5px solid #5d718b;
-
-    background:
-        linear-gradient(145deg,
-            transparent 48%,
-            #5d718b 49% 53%,
-            transparent 54%) left,
-        linear-gradient(215deg,
-            transparent 48%,
-            #5d718b 49% 53%,
-            transparent 54%) right;
-
-    background-size: 50% 100%;
-    background-repeat: no-repeat;
-}
 
 /* =========================================================
    FIELDS
@@ -123,68 +114,86 @@
     position: relative;
     z-index: 1;
 
-    margin-top: 13px;
+    margin-top: 10px;
 
     display: grid;
-    gap: 5px;
+
+    gap: 4px;
 }
+
 
 .connect-field span {
     color: #352d35;
 
     font-size: 0.72rem;
+
     font-weight: 800;
 }
 
-/* wraps each input + icon */
+
+/* =========================================================
+   INPUT WRAPPER
+   ========================================================= */
 
 .connect-control {
     position: relative;
 }
 
-/* actual MUI icon */
+
+/* MUI icon */
 
 .connect-field-icon {
     position: absolute;
+
     z-index: 2;
 
     left: 12px;
     top: 50%;
 
-    width: 18px !important;
-    height: 18px !important;
+    width: 17px !important;
+    height: 17px !important;
 
     color: #586781;
 
-    transform: translateY(-50%);
+    transform:
+        translateY(-50%);
 
     pointer-events: none;
 }
 
-/* message icon should sit near top of textarea */
+
+/* message icon sits near top */
 
 .connect-control-textarea .connect-field-icon {
-    top: 13px;
+    top: 12px;
+
     transform: none;
 }
 
-/* shared input styles */
+
+/* =========================================================
+   INPUTS
+   ========================================================= */
 
 .connect-control input,
 .connect-control textarea {
     width: 100%;
 
     color: #352d35;
+
     background: #eef0f3;
 
-    border: 1.5px solid #72819a;
+    border:
+        1.5px solid #72819a;
+
     border-radius: 5px;
 
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.82);
 
     font: inherit;
-    font-size: 0.78rem;
+
+    font-size: 0.76rem;
 
     outline: none;
 
@@ -194,33 +203,38 @@
         box-shadow 0.16s ease;
 }
 
-/* input */
+
+/* normal inputs */
 
 .connect-control input {
-    min-height: 40px;
+    min-height: 38px;
 
     padding:
-        8px 11px 8px 40px;
+        7px 10px 7px 37px;
 }
 
-/* textarea */
+
+/* message box */
 
 .connect-control textarea {
-    min-height: 96px;
+    min-height: 80px;
 
     padding:
-        9px 11px 9px 40px;
+        8px 10px 8px 37px;
 
     resize: vertical;
 }
+
 
 /* placeholders */
 
 .connect-control input::placeholder,
 .connect-control textarea::placeholder {
     color: #8790a3;
+
     opacity: 1;
 }
+
 
 /* focus */
 
@@ -235,6 +249,7 @@
         inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
+
 /* =========================================================
    SEND BUTTON
    ========================================================= */
@@ -243,32 +258,42 @@
     position: relative;
     z-index: 1;
 
-    width: min(100%, 225px);
-    min-height: 44px;
+    width:
+        min(100%,
+            205px);
+
+    min-height: 40px;
 
     margin:
-        18px auto 0;
+        15px auto 0;
 
     padding:
-        8px 16px;
+        7px 14px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
-    gap: 9px;
+    gap: 8px;
 
     color: #352d35;
+
     background: #f4cb67;
 
-    border: 1.5px solid #7c5d24;
+    border:
+        1.5px solid #7c5d24;
+
     border-radius: 5px;
 
     box-shadow:
         0 4px 0 #9d7631;
 
     font: inherit;
-    font-size: 0.8rem;
+
+    font-size: 0.77rem;
+
     font-weight: 850;
 
     cursor: pointer;
@@ -279,78 +304,112 @@
         filter 0.15s ease;
 }
 
+
 .connect-submit svg {
     width: 17px;
     height: 17px;
 }
 
+
 .connect-submit:hover,
 .connect-submit:focus-visible {
-    transform: translateY(-2px);
+    transform:
+        translateY(-2px);
 
     box-shadow:
         0 6px 0 #9d7631;
 
-    filter: brightness(1.025);
+    filter:
+        brightness(1.025);
 }
 
+
 .connect-submit:active {
-    transform: translateY(2px);
+    transform:
+        translateY(2px);
 
     box-shadow:
         0 2px 0 #9d7631;
 }
 
+
 /* =========================================================
    LAPTOP-SIZED SCREENS
+   DO NOT enlarge the card here
    ========================================================= */
 
 @media (min-width: 951px) and (max-width: 1250px) {
+
     .connect-form {
-        max-width: 350px;
+        max-width: 340px;
 
         padding:
-            24px 22px 30px;
+            23px 23px 24px;
+
+        margin-bottom: 26px;
     }
 
+
+    .connect-form-copy {
+        margin-bottom: 14px;
+
+        padding-right: 60px;
+    }
+
+
+    .connect-postal-stamp {
+        width: 51px;
+    }
+
+
     .connect-control textarea {
-        min-height: 92px;
+        min-height: 78px;
     }
 }
+
 
 /* =========================================================
    TABLET
    ========================================================= */
 
 @media (max-width: 950px) {
+
     .connect-form {
-        max-width: 315px;
+        max-width: 325px;
 
         padding:
-            22px 19px 28px;
+            22px 21px 23px;
+
+        margin-bottom: 22px;
     }
+
 
     .connect-form-copy {
-        margin-bottom: 15px;
-        padding-right: 48px;
+        margin-bottom: 13px;
+
+        padding-right: 56px;
     }
+
 
     .connect-form-kicker {
-        font-size: 1.25rem;
+        font-size: 1.3rem;
     }
 
-    .connect-form-copy::after {
-        width: 36px;
-        height: 36px;
+
+    .connect-postal-stamp {
+        top: -5px;
+        right: 0;
+
+        width: 47px;
     }
 
-    .connect-form-copy::before {
-        top: 8px;
-        right: 9px;
 
-        width: 15px;
-        height: 11px;
+    .connect-field {
+        margin-top: 9px;
+
+        gap: 4px;
     }
+
 
     .connect-field-icon {
         left: 11px;
@@ -359,81 +418,119 @@
         height: 16px !important;
     }
 
+
     .connect-control input {
-        min-height: 38px;
-        padding-left: 36px;
+        min-height: 37px;
+
+        padding-left: 35px;
     }
+
 
     .connect-control textarea {
-        min-height: 86px;
-        padding-left: 36px;
+        min-height: 76px;
+
+        padding-left: 35px;
     }
 
+
     .connect-control-textarea .connect-field-icon {
-        top: 12px;
+        top: 11px;
+    }
+
+
+    .connect-submit {
+        width:
+            min(100%,
+                200px);
+
+        min-height: 39px;
+
+        margin-top: 14px;
     }
 }
+
 
 /* =========================================================
    MOBILE
    ========================================================= */
 
 @media (max-width: 760px) {
+
     .connect-form {
         order: 1;
 
-        width: min(calc(100% - 28px),
-                410px);
+        width:
+            min(calc(100% - 28px),
+                350px);
 
         max-width: none;
 
-        margin: 0 auto;
+        margin:
+            0 auto;
 
         padding:
-            25px 22px 30px;
+            23px 21px 24px;
 
         align-self: auto;
     }
+
 
     .connect-laptop {
         order: 2;
     }
 }
 
+
 /* =========================================================
    SMALL MOBILE
    ========================================================= */
 
 @media (max-width: 480px) {
+
     .connect-form {
-        width: calc(100% - 24px);
+        width:
+            calc(100% - 24px);
 
         padding:
-            23px 17px 27px;
+            21px 17px 22px;
     }
 
+
     .connect-form-copy {
-        padding-right: 44px;
+        padding-right: 51px;
     }
+
 
     .connect-form-kicker {
         font-size: 1.2rem;
     }
+
+
+    .connect-postal-stamp {
+        top: -3px;
+
+        width: 43px;
+    }
+
 
     .connect-control input,
     .connect-control textarea {
         font-size: 16px;
     }
 
+
     .connect-control textarea {
-        min-height: 94px;
+        min-height: 78px;
     }
+
 
     .connect-submit {
         width: 100%;
-        max-width: 235px;
+
+        max-width: 205px;
     }
 }
+
 
 /* =========================================================
    REDUCED MOTION

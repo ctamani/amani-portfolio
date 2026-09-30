@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 
-import "../styles/AnimatedCoder.css";
+import "./AnimatedCoder.css";
 
 const FRAMES = [
-  "/images/coder-frame-1.png",
-  "/images/coder-frame-2.png",
-  "/images/coder-frame-1.png",
-  "/images/coder-frame-4.png",
-  "/images/coder-frame-1.png",
-  "/images/coder-frame-3.png",
+  "/images/intro/coder-frame-1.png",
+  "/images/intro/coder-frame-2.png",
+  "/images/intro/coder-frame-1.png",
+  "/images/intro/coder-frame-4.png",
+  "/images/intro/coder-frame-1.png",
+  "/images/intro/coder-frame-3.png",
 ];
 
 const FRAME_INTERVAL = 520;

@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 import EmailRoundedIcon from "@mui/icons-material/EmailRounded";
 
-import { EMAIL_LINK } from "../config/site.js";
-import "../styles/Intro.css";
+import { EMAIL_LINK } from "../../config/site.js";
+import "./Intro.css";
 import AnimatedCoder from "./AnimatedCoder.jsx";
 
 const NAME = "amani";

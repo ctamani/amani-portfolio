@@ -1,19 +1,18 @@
 import { useState } from "react";
 
-import ChevronLeftRoundedIcon from "@mui/icons-material/ChevronLeftRounded";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LaunchRoundedIcon from "@mui/icons-material/LaunchRounded";
 
-import { PROJECTS } from "../data/projects.js";
-import { SITE } from "../config/site.js";
-import { useProjectCarousel } from "../hooks/useProjectCarousel.js";
+import { PROJECTS } from "../../data/projects.js";
+//import { SITE } from "../../config/site.js";
+import { useProjectCarousel } from "../../hooks/useProjectCarousel.js";
 
-import "../styles/ProjectsConsole.css";
+import "./Console.css";
+import ProjectArchive from "./Archive.jsx";
 
-import FadeInSection from "./FadeInSection.jsx";
-import ProjectDetail from "./ProjectDetail.jsx";
-import ProjectLibrary from "./ProjectLibrary.jsx";
-import SectionHeading from "./SectionHeading.jsx";
+import ProjectDetail from "./Detail.jsx";
+import ProjectLibrary from "./Library.jsx";
+import SectionHeading from "../SectionHeading.jsx";
 
 export default function ProjectsConsole() {
   const [screenView, setScreenView] = useState("library");
@@ -31,7 +30,7 @@ export default function ProjectsConsole() {
     showPreviousProject,
   } = useProjectCarousel({ projects: PROJECTS, screenView });
 
-  const githubLink = activeProject.githubLink || SITE.github;
+  //const githubLink = activeProject.githubLink || SITE.github;
   const isArchiveView = screenView === "archive";
   const hasLiveDemo = !isArchiveView && Boolean(activeProject.liveLink);
 
@@ -78,21 +77,11 @@ export default function ProjectsConsole() {
                   onOpenArchive={openArchive}
                 />
               ) : screenView === "archive" ? (
-                <FadeInSection
-                  key="project-archive"
-                  className="project-archive-view"
-                  motion="fade"
-                >
-                  <button
-                    type="button"
-                    className="project-library-back"
-                    onClick={returnToLibrary}
-                  >
-                    <ChevronLeftRoundedIcon />
-                    Library
-                  </button>
-                </FadeInSection>
-              ) : (
+                  <ProjectArchive
+                    key="project-archive"
+                    onBack={returnToLibrary}
+                  />
+                ) : (
                 <ProjectDetail
                   key={activeProject.id}
                   project={activeProject}
@@ -110,7 +99,7 @@ export default function ProjectsConsole() {
             {hasLiveDemo ? (
               <a
                 className="project-console-action project-console-action--live"
-                href={activeProject.liveLink}
+                //href={activeProject.liveLink}
                 target="_blank"
                 rel="noreferrer"
                 aria-label={`Open ${activeProject.title} live demo`}
@@ -131,7 +120,7 @@ export default function ProjectsConsole() {
             {!isArchiveView ? (
               <a
                 className="project-console-action"
-                href={githubLink}
+                //href={githubLink}
                 target="_blank"
                 rel="noreferrer"
                 aria-label={`Open ${activeProject.title} on GitHub`}

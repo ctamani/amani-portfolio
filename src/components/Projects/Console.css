@@ -42,7 +42,7 @@
 .project-console-dpad {
     width: 76px;
     height: 76px;
-    background-image: url("/images/project-dpad.png");
+    background-image: url("/images/projects/project-dpad.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -144,14 +144,6 @@
     border-radius: 5px;
 }
 
-/* ARCHIVE VIEW */
-
-.project-archive-view {
-    width: 100%;
-    height: 100%;
-    padding: 18px 64px;
-}
-
 /* TABLET */
 
 @media (max-width: 820px) {
@@ -161,9 +153,6 @@
         --cartridge-width: clamp(145px, min(28cqw, 34cqh), 180px);
     }
 
-    .project-archive-view {
-        padding: 16px clamp(16px, 4cqw, 24px) 14px;
-    }
 }
 
 /* MOBILE */
@@ -217,10 +206,6 @@
     .project-console-action svg {
         width: 20px;
         height: 20px;
-    }
-
-    .project-archive-view {
-        padding: 14px;
     }
 }
 

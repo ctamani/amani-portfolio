@@ -1,3 +1,6 @@
+/* =========================================================
+   CONNECT SECTION
+   ========================================================= */
 
 .connect-section {
   position: relative;
@@ -7,24 +10,77 @@
   overflow: hidden;
 }
 
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+.connect-table-image {
+  position: absolute;
+
+  z-index: 0;
+
+  left: 50%;
+  bottom: 0;
+
+  width: clamp(1000px, 120vw, 1400px);
+  height: auto;
+
+  transform: translateX(-50%);
+
+  pointer-events: none;
+  user-select: none;
+}
+
+
+/*
+  Keep all actual Connect content above the table.
+*/
+
+.connect-inner {
+  position: relative;
+  z-index: 2;
+
+  width: min(calc(100% - var(--page-gutter)),
+      var(--content-width));
+
+  margin: 0 auto;
+}
+
+.connect-laptop,
+.connect-form {
+  position: relative;
+  z-index: 3;
+}
+
 .connect-inner {
   position: relative;
   width: min(calc(100% - var(--page-gutter)), var(--content-width));
   margin: 0 auto;
 }
 
-/* MAIN LAYOUT */
+/* =========================================================
+   MAIN LAYOUT
+   ========================================================= */
 
 .connect-layout {
   margin-top: 44px;
+
   display: grid;
+
   grid-template-columns:
     minmax(0, 1fr) minmax(330px, 390px);
+
   align-items: center;
-  gap: clamp(32px, 4.5vw, 56px);
+
+  gap:
+    clamp(32px,
+      4.5vw,
+      56px);
 }
 
-/* LAPTOP */
+/* =========================================================
+   LAPTOP
+   ========================================================= */
 
 .connect-laptop {
   position: relative;
@@ -41,56 +97,23 @@
   pointer-events: none;
 }
 
-/* LAPTOP DESKTOP */
-
-.connect-desktop {
-  /*
-    these two values resize every shortcut icon at once.
-  */
-  --desktop-icon-size: clamp(31px, 3.8vw, 48px);
-  --desktop-icon-gap: clamp(7px, 1.2vw, 14px);
-  position: absolute;
-  top: 6.3%;
-  left: 18.1%;
-  width: 64.3%;
-  height: 43.3%;
-  display: grid;
-  grid-template-columns:
-    minmax(70px, 0.62fr) minmax(145px, 1.38fr);
-  align-items: center;
-  gap: clamp(8px, 1.3vw, 16px);
-  padding:
-    clamp(8px, 1.3vw, 15px) clamp(8px, 1.2vw, 14px);
-  overflow: hidden;
-}
-
-/* DESKTOP SHORTCUT ICONS */
-
-.connect-desktop-icons {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  place-items: center;
-  gap: var(--desktop-icon-gap);
-}
+/* =========================================================
+   DESKTOP SHORTCUT APPEARANCE
+   ========================================================= */
 
 .connect-desktop-icon {
-  width: var(--desktop-icon-size);
-  height: var(--desktop-icon-size);
+  width: 100%;
+  height: 100%;
   display: grid;
   place-items: center;
   color: inherit;
   text-decoration: none;
+  cursor: inherit;
   transition:
     transform 0.16s ease,
     filter 0.16s ease;
 }
 
-/*
-  No outer tile/background.
-
-  All four now behave like individual desktop icons
-  instead of little UI buttons.
-*/
 .connect-desktop-icon-image {
   width: 100%;
   height: 100%;
@@ -109,12 +132,6 @@
     drop-shadow(1px 2px 0 rgba(53, 38, 60, 0.22));
 }
 
-.connect-desktop-icon:hover,
-.connect-desktop-icon:focus-visible {
-  transform:
-    translateY(-2px) scale(1.08);
-  filter: brightness(1.06);
-}
 
 /* LINKEDIN */
 
@@ -151,11 +168,6 @@
 
 /* RESUME */
 
-/*
-  Same idea as Email:
-  no outer square/card.
-*/
-
 .connect-desktop-icon.is-resume .connect-desktop-icon-image {
   color: #f0d8a7;
 }
@@ -171,12 +183,14 @@
     drop-shadow(1px 2px 0 rgba(53, 38, 60, 0.24));
 }
 
-/* NOTEPAD WINDOW */
+
+/* =========================================================
+   NOTEPAD WINDOW
+   ========================================================= */
 
 .connect-notepad {
   width: 100%;
-  max-width: 285px;
-  justify-self: end;
+  max-width: none;
   background: var(--retro-window-bg);
   border:
     clamp(1px, 0.16vw, 2px) solid var(--retro-window-border);
@@ -185,7 +199,10 @@
   overflow: hidden;
 }
 
-/* NOTEPAD TITLE BAR */
+
+/* =========================================================
+   NOTEPAD TITLE BAR
+   ========================================================= */
 
 .connect-notepad-titlebar {
   min-height: clamp(11px, 1.2vw, 16px);
@@ -196,9 +213,7 @@
   color: var(--cream);
   background: var(--retro-titlebar);
   font-family: var(--retro-font);
-  font-size: clamp(0.26rem,
-      0.4vw,
-      0.44rem);
+  font-size: clamp(0.26rem, 0.4vw, 0.44rem);
   font-weight: 700;
 }
 
@@ -211,11 +226,10 @@
   white-space: nowrap;
 }
 
-/* NOTEPAD CONTENT */
 
-/*
-  Reduced from the previous taller window.
-*/
+/* =========================================================
+   NOTEPAD CONTENT
+   ========================================================= */
 
 .connect-notepad-body {
   position: relative;
@@ -232,9 +246,7 @@
 .connect-notepad-body p,
 .connect-typed-message {
   margin: 0;
-  font-size: clamp(0.56rem,
-      1.15vw,
-      1.05rem);
+  font-size: clamp(0.56rem, 1.15vw, 1.05rem);
   line-height: 1.06;
   letter-spacing: -0.018em;
 }
@@ -243,6 +255,9 @@
   white-space: pre-line;
 }
 
+/* =========================================================
+   NOTEPAD CURSOR
+   ========================================================= */
 .connect-notepad-cursor {
   display: inline;
   margin-left: 1px;
@@ -263,13 +278,15 @@
   }
 }
 
-/* COPYRIGHT */
+/* =========================================================
+   COPYRIGHT
+   ========================================================= */
 
 .connect-copyright {
   position: absolute;
   z-index: 5;
   right: 0;
-  bottom: 6px;
+  bottom: 16px;
   margin: 0;
   color: rgba(255, 248, 239, 0.62);
   font-size: 0.86rem;
@@ -277,25 +294,27 @@
   text-align: right;
 }
 
-/* LAPTOP-SIZED SCREENS */
+/* =========================================================
+   LAPTOP-SIZED SCREENS
+   ========================================================= */
 
 @media (min-width: 951px) and (max-width: 1250px) {
   .connect-layout {
     grid-template-columns:
       minmax(0, 1fr) 340px;
-    gap: 30px;
-  }
 
-  .connect-laptop {
-    width: min(100%, 720px);
+    gap: 30px;
   }
 }
 
-/* TABLET */
+/* =========================================================
+   TABLET
+   ========================================================= */
 
 @media (max-width: 950px) {
   .connect-inner {
-    width: min(calc(100% - var(--page-gutter-tablet)), var(--content-width));
+    width: min(calc(100% - var(--page-gutter-tablet)),
+        var(--content-width));
   }
 
   .connect-layout {
@@ -309,7 +328,9 @@
   }
 }
 
-/* MOBILE */
+/* =========================================================
+   MOBILE
+   ========================================================= */
 
 @media (max-width: 760px) {
   .connect-section {
@@ -339,46 +360,26 @@
     align-self: center;
   }
 
-  /* LAPTOP DESKTOP */
-  .connect-desktop {
-    --desktop-icon-size: clamp(26px, 7vw, 38px);
-    --desktop-icon-gap: clamp(5px, 1.6vw, 9px);
-    grid-template-columns:
-      minmax(56px, 0.58fr) minmax(120px, 1.42fr);
-    gap: clamp(5px, 1.6vw, 9px);
-    padding:
-      clamp(5px, 1.7vw, 9px);
-  }
-
-  /* SHORTER MOBILE NOTEPAD */
-  .connect-notepad {
-    max-width: 250px;
-  }
-
   .connect-notepad-body {
-    min-height: clamp(42px,
-        11vw,
-        62px);
-    padding: clamp(4px,
-        1.4vw,
-        7px);
+    min-height: clamp(42px, 11vw, 62px);
+    padding: clamp(4px, 1.4vw, 7px);
   }
 
   .connect-notepad-body p {
-    font-size: clamp(0.44rem,
-        2.7vw,
-        0.76rem);
+    font-size: clamp(0.44rem, 2.7vw, 0.76rem);
   }
 
-  /* COPYRIGHT */
   .connect-copyright {
-    right: 6px;
-    bottom: 3px;
-    font-size: 0.46rem;
+    right: 145px;
+    text-align: center;
+    bottom: 12px;
+    font-size: 0.56rem;
   }
 }
 
-/* SMALL MOBILE */
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
 
 @media (max-width: 480px) {
   .connect-layout {
@@ -390,38 +391,25 @@
     margin: 0;
   }
 
-  .connect-desktop {
-    --desktop-icon-size: clamp(23px, 7vw, 30px);
-    --desktop-icon-gap: 4px;
-    grid-template-columns:
-      54px minmax(0, 1fr);
-    gap: 3px;
-    padding: 4px;
-  }
-
-  .connect-notepad {
-    max-width: none;
-  }
-
   .connect-notepad-body {
     min-height: 40px;
     padding: 4px;
   }
 
   .connect-notepad-body p {
-    font-size: clamp(0.4rem,
-        2.5vw,
-        0.62rem);
+    font-size: clamp(0.4rem, 2.5vw, 0.62rem);
   }
 
   .connect-copyright {
     right: 4px;
-    bottom: 2px;
-    font-size: 0.42rem;
+    bottom: 4px;
+    font-size: 0.52rem;
   }
 }
 
-/* REDUCED MOTION */
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
   .connect-desktop-icon {

@@ -1,9 +1,9 @@
 import { useState } from "react";
 
-import { EXPERIENCE_ITEMS } from "../data/experience.js";
-import "../styles/Experience.css";
-import SectionHeading from "./SectionHeading.jsx";
-import FadeInSection from "./FadeInSection.jsx";
+import { EXPERIENCE_ITEMS } from "../../data/experience.js";
+import "./Experience.css";
+import SectionHeading from "../SectionHeading.jsx";
+import FadeInSection from "../FadeInSection.jsx";
 
 const BULLET_STAGGER_MS = 90;
 

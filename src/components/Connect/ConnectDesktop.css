@@ -1,0 +1,179 @@
+/* =========================================================
+   CONNECT DESKTOP INTERACTION
+
+   Screen boundaries, draggable shortcuts, drag states,
+   and the draggable Notepad window.
+   ========================================================= */
+
+
+/* =========================================================
+   LAPTOP SCREEN / DRAG BOUNDARY
+   ========================================================= */
+
+.connect-desktop {
+    --desktop-icon-size:
+        clamp(31px, 3.8vw, 48px);
+
+    position: absolute;
+
+    /*
+    These values match the visible screen inside
+    the laptop PNG. The draggable items are bounded
+    by this element.
+  */
+    top: 12.3%;
+    left: 18.1%;
+
+    width: 64.3%;
+    height: 43.3%;
+
+    overflow: hidden;
+    user-select: none;
+    touch-action: none;
+}
+
+
+/* =========================================================
+   GENERIC DRAGGABLE ITEM
+   ========================================================= */
+
+.connect-draggable {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+
+    user-select: none;
+    touch-action: none;
+    will-change: transform;
+}
+
+.connect-draggable.is-dragging {
+    z-index: 50;
+}
+
+
+/* =========================================================
+   DESKTOP SHORTCUT AREA
+   ========================================================= */
+
+.connect-desktop-icons {
+    position: absolute;
+    inset: 0;
+
+    /*
+    The nav itself does not intercept pointer events.
+    Each draggable shortcut enables them again.
+  */
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   DRAGGABLE SHORTCUT
+   ========================================================= */
+
+.connect-desktop-shortcut {
+    width: var(--desktop-icon-size);
+    height: var(--desktop-icon-size);
+
+    pointer-events: auto;
+
+    /*
+    Normal desktop behavior:
+    hover = clickable pointer.
+    Cursor changes only after a real drag begins.
+  */
+    cursor: pointer;
+}
+
+.connect-desktop-shortcut.is-dragging {
+    cursor: grabbing;
+}
+
+
+/* Do not run the hover animation while dragging. */
+
+.connect-desktop-shortcut:not(.is-dragging) .connect-desktop-icon:hover,
+.connect-desktop-shortcut:not(.is-dragging) .connect-desktop-icon:focus-visible {
+    transform:
+        translateY(-2px) scale(1.08);
+
+    filter: brightness(1.06);
+}
+
+
+/* =========================================================
+   DRAGGABLE NOTEPAD WRAPPER
+   ========================================================= */
+
+.connect-notepad-drag {
+    /*
+    The draggable wrapper owns the Notepad's width.
+  */
+    width: min(56%, 285px);
+
+    cursor: default;
+    pointer-events: auto;
+}
+
+
+/* =========================================================
+   NOTEPAD DRAG HANDLE
+   ========================================================= */
+
+/*
+  This transparent strip sits over the title bar.
+  Only dragging from this area moves the Notepad.
+*/
+
+.connect-notepad-drag-handle {
+    position: absolute;
+    z-index: 10;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: clamp(17px, 2vw, 25px);
+
+    cursor: grab;
+    touch-action: none;
+}
+
+.connect-notepad-drag.is-dragging .connect-notepad-drag-handle {
+    cursor: grabbing;
+}
+
+
+/* =========================================================
+   RESPONSIVE DESKTOP INTERACTION SIZES
+   ========================================================= */
+
+@media (max-width: 950px) {
+    .connect-notepad-drag {
+        width: 55%;
+    }
+}
+
+@media (max-width: 760px) {
+    .connect-desktop {
+        --desktop-icon-size:
+            clamp(26px, 7vw, 38px);
+    }
+
+    .connect-notepad-drag {
+        width: 56%;
+    }
+}
+
+@media (max-width: 480px) {
+    .connect-desktop {
+        --desktop-icon-size:
+            clamp(23px, 7vw, 30px);
+    }
+
+    .connect-notepad-drag {
+        width: 57%;
+    }
+}

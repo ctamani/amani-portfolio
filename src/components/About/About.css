@@ -62,43 +62,25 @@
 
 .about-photo-card,
 .about-education,
-.about-signature,
 .about-content-page > * {
   position: relative;
   z-index: 1;
 }
 
 .about-photo-card {
-  padding: 24px 20px 25px;
+  width: 100%;
 
-  text-align: center;
-
-  background: #ebe2cf;
-  border: 2px solid #bca774;
-
-  box-shadow: 3px 4px 0 rgba(186, 128, 88, 0.18);
+  position: relative;
+  z-index: 1;
 }
 
 .about-photo-card img {
   width: 100%;
-  aspect-ratio: 1;
+  height: auto;
 
   display: block;
 
-  object-fit: cover;
-  object-position: 50% 15%;
-
-  background: #51786d;
-
-  image-rendering: pixelated;
-}
-
-.about-photo-card strong {
-  display: block;
-
-  margin-top: 6px;
-
-  font-size: 0.82rem;
+  object-fit: contain;
 }
 
 .about-education {
@@ -140,17 +122,6 @@
   font-size: 0.72rem;
 }
 
-.about-signature {
-  position: absolute;
-  bottom: 24px;
-  left: 42px;
-
-  color: #25545c;
-
-  font-family: Georgia, serif;
-  font-size: 1.22rem;
-  font-style: italic;
-}
 
 .about-content-page {
   padding-left: 48px;
@@ -329,10 +300,6 @@
     display: none;
   }
 
-  .about-signature {
-    bottom: 20px;
-    left: 32px;
-  }
 
   .about-tabs {
     position: static;

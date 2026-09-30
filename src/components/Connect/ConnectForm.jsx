@@ -3,10 +3,10 @@ import ChatBubbleOutlineRoundedIcon from "@mui/icons-material/ChatBubbleOutlineR
 import EmailRoundedIcon from "@mui/icons-material/EmailRounded";
 import PersonRoundedIcon from "@mui/icons-material/PersonRounded";
 
-import "../styles/ConnectForm.css";
+import "./ConnectForm.css";
 
 
-const FORM_ENDPOINT = "https://formspree.io/f/my-form-id";
+const FORM_ENDPOINT = "https://formspree.io/f/xkjgeqgp";
 
 
 export default function ConnectForm() {
@@ -18,9 +18,17 @@ export default function ConnectForm() {
     >
       <div className="connect-form-copy">
         <p className="connect-form-kicker">
-          Get in touch
+            Get in touch
         </p>
-      </div>
+
+        <img
+            className="connect-postal-stamp"
+            src="/images/connect/postal-stamp.png"
+            alt=""
+            aria-hidden="true"
+            draggable="false"
+        />
+        </div>
 
       <label className="connect-field">
         <span>Name</span>
