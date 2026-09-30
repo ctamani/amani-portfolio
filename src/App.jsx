@@ -1,11 +1,11 @@
-import Intro from "./components/Intro.jsx";
-import NavBar from "./components/NavBar.jsx";
-import About from "./components/About.jsx";
-import Experience from "./components/Experience.jsx";
+import Intro from "./components/Intro/Intro.jsx";
+import NavBar from "./components/Intro/NavBar.jsx";
+import About from "./components/About/About.jsx";
+import Experience from "./components/Experience/Experience.jsx";
 import FadeInSection from "./components/FadeInSection.jsx";
 import TechStack from "./components/TechStack.jsx";
-import ProjectsConsole from "./components/ProjectsConsole.jsx";
-import Connect from "./components/Connect.jsx";
+import ProjectsConsole from "./components/Projects/Console.jsx";
+import Connect from "./components/Connect/Connect.jsx";
 
 export default function App() {
   return (
