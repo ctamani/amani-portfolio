@@ -1,9 +1,5 @@
-import DescriptionRoundedIcon from "@mui/icons-material/DescriptionRounded";
-import EmailRoundedIcon from "@mui/icons-material/EmailRounded";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import { PORTFOLIO_LINKS } from "../../config/portfolioLinks.js";
 
-import { EMAIL_LINK, SITE } from "../../config/site.js";
 import "./NavBar.css";
 
 const NAV_LINKS = [
@@ -11,33 +7,6 @@ const NAV_LINKS = [
   { label: "Experience", href: "#experience" },
   { label: "Stack", href: "#stack" },
   { label: "Projects", href: "#projects" },
-];
-
-const ACTION_LINKS = [
-  {
-    label: "Resume",
-    href: "/resume.pdf",
-    Icon: DescriptionRoundedIcon,
-    openInNewTab: true,
-  },
-  {
-    label: "GitHub",
-    href: SITE.github,
-    Icon: GitHubIcon,
-    openInNewTab: true,
-  },
-  {
-    label: "LinkedIn",
-    href: SITE.linkedIn,
-    Icon: LinkedInIcon,
-    openInNewTab: true,
-  },
-  {
-    label: "Email",
-    href: EMAIL_LINK,
-    Icon: EmailRoundedIcon,
-    openInNewTab: false,
-  },
 ];
 
 export default function NavBar() {
@@ -57,14 +26,14 @@ export default function NavBar() {
         </nav>
 
         <div className="navbar-actions" aria-label="Portfolio links">
-          {ACTION_LINKS.map(({ label, href, Icon, openInNewTab }) => (
+          {PORTFOLIO_LINKS.map(({ label, href, Icon, external}) => (
             <a
               key={label}
               className="nav-action"
               href={href}
               aria-label={label}
               title={label}
-              {...(openInNewTab
+              {...(external
                 ? { target: "_blank", rel: "noreferrer" }
                 : {})}
             >
