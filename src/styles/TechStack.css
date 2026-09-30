@@ -2,17 +2,6 @@
    TECH STACK WINDOW
    ========================================================= */
 
-/*
-  RetroWindow.css now handles:
-  - outer window border
-  - title bar
-  - app icon
-  - minimize / maximize / close controls
-  - menu bar
-
-  This file only styles what is unique to Tech Stack.
-*/
-
 .stack-browser {
   --stack-paper: #f1e6de;
   --stack-ink: #35263c;
@@ -49,7 +38,6 @@
   grid-template-columns:
     245px minmax(0, 1fr);
 }
-
 
 /* =========================================================
    CATEGORY SIDEBAR
