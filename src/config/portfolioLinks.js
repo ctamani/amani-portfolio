@@ -1,6 +1,5 @@
 // src/data/portfolioLinks.js
 
-import DescriptionRoundedIcon from "@mui/icons-material/DescriptionRounded";
 import EmailRoundedIcon from "@mui/icons-material/EmailRounded";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
@@ -8,13 +7,6 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { EMAIL_LINK, SITE } from "../config/site.js";
 
 export const PORTFOLIO_LINKS = [
-  {
-    key: "resume",
-    label: "Resume",
-    href: SITE.resume,
-    Icon: DescriptionRoundedIcon,
-    external: true,
-  },
   {
     key: "github",
     label: "GitHub",

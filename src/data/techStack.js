@@ -1,5 +1,4 @@
 import AssessmentRoundedIcon from "@mui/icons-material/AssessmentRounded";
-import AutoGraphRoundedIcon from "@mui/icons-material/AutoGraphRounded";
 import DataObjectRoundedIcon from "@mui/icons-material/DataObjectRounded";
 import PsychologyRoundedIcon from "@mui/icons-material/PsychologyRounded";
 import TransformRoundedIcon from "@mui/icons-material/TransformRounded";
@@ -98,25 +97,6 @@ export const TECH_STACK = [
         icon: "logos:pandas-icon",
       },
       {
-        name: "NLP",
-        Icon: PsychologyRoundedIcon,
-      },
-      {
-        name: "Model Evaluation",
-        Icon: AssessmentRoundedIcon,
-      },
-      {
-        name: "Feature Engineering",
-        Icon: AutoGraphRoundedIcon,
-      },
-    ],
-  },
-
-  {
-    id: "data-engineering",
-    label: "Data Engineering",
-    items: [
-      {
         name: "PySpark",
         icon: "logos:apache-spark",
       },
@@ -127,6 +107,14 @@ export const TECH_STACK = [
       {
         name: "Azure Synapse",
         icon: "logos:microsoft-azure",
+      },
+      {
+        name: "NLP",
+        Icon: PsychologyRoundedIcon,
+      },
+      {
+        name: "Model Evaluation",
+        Icon: AssessmentRoundedIcon,
       },
       {
         name: "SQL ETL",

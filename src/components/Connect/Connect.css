@@ -166,23 +166,6 @@
   height: 82%;
 }
 
-/* RESUME */
-
-.connect-desktop-icon.is-resume .connect-desktop-icon-image {
-  color: #f0d8a7;
-}
-
-.connect-desktop-icon.is-resume svg {
-  width: 78%;
-  height: 78%;
-}
-
-.connect-desktop-icon.is-email svg,
-.connect-desktop-icon.is-resume svg {
-  filter:
-    drop-shadow(1px 2px 0 rgba(53, 38, 60, 0.24));
-}
-
 
 /* =========================================================
    NOTEPAD WINDOW

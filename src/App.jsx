@@ -23,10 +23,10 @@ export default function App() {
           <Experience />
         </FadeInSection>
         <FadeInSection>
-          <TechStack />
+          <ProjectsConsole />
         </FadeInSection>
         <FadeInSection>
-          <ProjectsConsole />
+          <TechStack />
         </FadeInSection>
         <FadeInSection>
           <Connect />

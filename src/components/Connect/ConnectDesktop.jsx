@@ -47,14 +47,6 @@ const DESKTOP_LINKS = PORTFOLIO_LINKS.map((link) => {
         y: 0.43,
       },
     },
-
-    resume: {
-      className: "is-resume",
-      initialPosition: {
-        x: 0.22,
-        y: 0.43,
-      },
-    },
   };
 
   return {
