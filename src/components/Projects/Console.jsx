@@ -99,7 +99,7 @@ export default function ProjectsConsole() {
             {hasLiveDemo ? (
               <a
                 className="project-console-action project-console-action--live"
-                //href={activeProject.liveLink}
+                href={activeProject.liveLink}
                 target="_blank"
                 rel="noreferrer"
                 aria-label={`Open ${activeProject.title} live demo`}
@@ -107,6 +107,16 @@ export default function ProjectsConsole() {
               >
                 <LaunchRoundedIcon />
               </a>
+            ) : !isArchiveView ? (
+              <button
+                type="button"
+                className="project-console-action project-console-action--live"
+                onClick={() => handleOpenProject(carouselIndex % totalProjects)}
+                aria-label={`View ${activeProject.title} project details`}
+                title="Project details"
+              >
+                <LaunchRoundedIcon />
+              </button>
             ) : (
               <span
                 className="project-console-action project-console-action--live is-disabled"

@@ -8,9 +8,8 @@ export const PROJECTS = [
     description:
       "Currently developing a speech-first language learning app that combines real conversation practice with adaptive spaced repetition and personalized review to help people actually learn how to speak a new language.",
     stack: ["FastAPI", "Flutter", "SQLite", "Python"],
-    liveLink: "#",
-    githubLink: "#",
-  },
+    //liveLink: "#",
+    },
   {
     id: "rag-chatbot",
     title: "IIT Chatbot",
@@ -20,7 +19,6 @@ export const PROJECTS = [
     description:
       "An academic support chatbot grounded in official university policy sources using retrieval-augmented generation pipelines.",
     stack: ["Python", "FAISS", "FastAPI", "Streamlit"],
-    liveLink: "#",
     githubLink: "#",
   },
   {
@@ -32,7 +30,6 @@ export const PROJECTS = [
     description:
       "Machine learning project using 50+ years of Federal Reserve data to forecast U.S recession risk 3-6 months ahead. Compared Logistic Regression, Random Forest, and XGBoost, with the tuned XGBoost model achieving ~0.99 ROC-AUC. ",
     stack: ["R", "XGBoost", "Random Forest", "ggplot2"],
-    liveLink: "#",
     githubLink: "#",
   },
 ];
